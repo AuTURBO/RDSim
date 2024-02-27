@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <!-- 패키지의 이름을 정의합니다. -->
+  <name>rdsim_description</name>
+  <!-- 패키지의 버전을 정의합니다. -->
+  <version>0.0.0</version>
+  
+  <!-- 패키지에 대한 간단한 설명을 제공합니다. -->
+  <description>TODO: Package mobile robot description</description>
+  
+  <!-- 패키지를 유지 보수하는 사람의 이메일을 제공합니다. -->
+  <maintainer email="0380089@gmail.com">ggh-png</maintainer>
+  
+  <!-- 패키지의 라이선스 정보를 제공합니다. -->
+  <license>TODO: License declaration</license>
+
+  <!-- 빌드 도구로서 ament_cmake를 사용함을 선언합니다. -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- 실행 의존성 (runtime dependency)을 정의합니다. -->
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <!-- 테스트 실행 의존성을 정의합니다. -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <!-- 빌드 타입을 ament_cmake로 정의합니다. -->
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
