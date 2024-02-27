@@ -1,5 +1,7 @@
 ## RDSim 
 
+![small_sim_world](./fig/small_sim_world.png)
+
 ### Install && build
 
 ```bash
