@@ -18,7 +18,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="1.5707 0.0 1.5707" />
         <geometry>
-          <mesh filename="file://$(find rdsim_description)/meshes/bridge_plate.stl" scale="0.001 0.001 0.001" />
+          <mesh filename="file://$(find rdsim_description)/meshes/bridge-plate.stl" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="dark_grey" />
       </visual>

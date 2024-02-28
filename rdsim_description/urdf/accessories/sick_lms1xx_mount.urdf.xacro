@@ -46,7 +46,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!-- Origin of this mesh is the base of the bracket. -->
-          <mesh filename="file://$(find rdsim_description)/meshes/sick_lms1xx_mount.stl" scale="0.001 0.001 0.001" />
+          <mesh filename="file://$(find rdsim_description)/meshes/sick-lms1xx-bracket.stl" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="dark_grey" />
       </visual>
