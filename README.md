@@ -29,6 +29,26 @@ sudo apt install ros-humble-teleop-twist-joy
 sudo apt install ros-humble-twist-mux
 ```
 
+### Gazebo world launch
+
+> Gazebo 맵만 실행시킬 경우
+> 
+
+```bash
+ros2 launch rdsim_gazebo rdsim_gazebo_world.launch.py  
+```
+
+Robot Display launch 
+
+> Gazebo 없이 로봇의 tf를 확인하고 싶을 경우
+> 
+
+```bash
+ros2 launch rdsim_description rdsim_description.launch.py 
+```
+
+---
+
 ### Sim launch
 
 ```bash
