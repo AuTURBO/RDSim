@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="laser_visual"  value="true"/>
+  <xacro:property name="camera_visual" value="true"/>
+  <xacro:property name="imu_visual"    value="true"/>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+
+<!-- wheel -->
+  <gazebo reference="front_left_wheel_link">
+    <mu1>10000000</mu1>
+    <mu2>10000000</mu2>
+    <kp>500000000.0</kp>
+    <kd>10000.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="rear_left_wheel_link">
+    <mu1>10000000</mu1>
+    <mu2>10000000</mu2>
+    <kp>500000000.0</kp>
+    <kd>10000.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel_link">
+    <mu1>10000000</mu1>
+    <mu2>10000000</mu2>
+    <kp>500000000.0</kp>
+    <kd>10000.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="rear_right_wheel_link">
+    <mu1>10000000</mu1>
+    <mu2>10000000</mu2>
+    <kp>500000000.0</kp>
+    <kd>10000.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+
+</robot>

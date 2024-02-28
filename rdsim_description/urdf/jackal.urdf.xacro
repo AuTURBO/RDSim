@@ -108,7 +108,7 @@
     <visual>
       <origin xyz="0 0 ${footprint_vertical_offset}" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
-        <mesh filename="file://$(find rdsim_description)/meshes/jackal-chassis.stl"/>
+        <mesh filename="file://$(find rdsim_description)/meshes/jackal-base.stl"/>
       </geometry>
       <material name="dark_grey" />
     </visual>
@@ -295,6 +295,9 @@
        of these into the final description is controlled by optenv variables, which
        default each one to off.-->
   <xacro:include filename="$(find rdsim_description)/urdf/accessories.urdf.xacro" />
+
+  <!-- 물성치 -->
+  <xacro:include filename="$(find rdsim_description)/urdf/jackal.gazebo.xacro" />
 
   <!-- Optional custom includes. -->
   <xacro:include filename="$(optenv JACKAL_URDF_EXTRAS empty.urdf)" />
