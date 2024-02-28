@@ -23,7 +23,7 @@ find_package(xacro REQUIRED)
 
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
 install(
-  DIRECTORY launch rviz worlds urdf gazebo models include
+  DIRECTORY launch rviz worlds urdf gazebo models include meshes
   DESTINATION share/${PROJECT_NAME}
 )
 
