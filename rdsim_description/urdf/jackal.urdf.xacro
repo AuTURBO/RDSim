@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="jackal" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:arg name="is_sim" default="false" />
+  <xacro:arg name="is_sim" default="true" />
   <xacro:arg name="prefix" default="" />
   <xacro:arg name="gazebo_controllers" default="$(find jackal_control)/config/control.yaml" />
   <xacro:property name="PI" value="3.1415926535897931" />

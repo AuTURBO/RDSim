@@ -36,12 +36,12 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name='xacro')]),
             ' ',
             PathJoinSubstitution(
-                [FindPackageShare('jackal_description'), 'urdf', 'jackal.urdf.xacro']
+                [FindPackageShare('rdsim_description'), 'urdf', 'jackal.urdf.xacro']
             )
         ]
     )
 
-    is_sim = LaunchConfiguration('is_sim', default=False)
+    is_sim = LaunchConfiguration('is_sim', default=True)
 
     is_sim_arg = DeclareLaunchArgument(
         'is_sim',
