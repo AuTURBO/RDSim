@@ -10,8 +10,9 @@ from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
-from ament_index_python.packages import get_package_share_directory
+# from ament_index_python.packages import get_package_share_directory
 from launch.actions import SetEnvironmentVariable
+from launch_ros.descriptions import ParameterValue
 import os
 
 def generate_launch_description():
@@ -34,7 +35,7 @@ def generate_launch_description():
         [
             FindPackageShare('rdsim_description'),
             'urdf',
-            'bmkbot_gazebo.urdf.xacro'
+            'jackal.urdf.xacro'
         ]
     )
     # rviz 파일의 경로를 설정합니다.
@@ -56,13 +57,23 @@ def generate_launch_description():
     
 
     # robot_state_publisher를 실행하는 노드를 설정합니다.
+    # robot_state_publisher_node = Node(
+    #     package='robot_state_publisher',
+    #     executable='robot_state_publisher',
+    #     parameters=[{'use_sim_time': use_sim_time, 'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
+
+    # )
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'use_sim_time': use_sim_time, 'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
-
+        parameters=[{
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'robot_description': ParameterValue(
+                Command(['xacro ', LaunchConfiguration('model')]),
+                value_type=str
+            )
+        }]
     )
-
     # joint_state_publisher를 실행하는 노드를 설정합니다.
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
@@ -84,13 +95,14 @@ def generate_launch_description():
             executable='rviz2',
             arguments=['-d', rviz_config_file],
             output='screen',
-            condition=IfCondition(start_rviz)),
+            condition=IfCondition(start_rviz)
+    )
     
     # gazebo를 실행하여 월드를 불러옵니다.
     spawn_entity = Node(
     	package='gazebo_ros', 
     	executable='spawn_entity.py',
-        arguments=['-entity', 'rdsim_bot', '-topic', 'robot_description', '-x', '0.5', '-y', '0.5', '-z', '0.01'],
+        arguments=['-entity', 'jackal', '-topic', 'robot_description', '-x', '0.5', '-y', '0.5', '-z', '0.01'],
         output='screen'
     )
 
@@ -136,11 +148,11 @@ def generate_launch_description():
 
         # 위에서 정의한 노드들을 실행합니다.
         # 로봇의 상태를 퍼블리시하는 노드
-        # joint_state_publisher_node,
-        # robot_state_publisher_node,
-        # joint_state_publisher_gui_node,
+        joint_state_publisher_node,
+        robot_state_publisher_node,
+        joint_state_publisher_gui_node,
 
         # 로봇을 gazebo에 스폰하는 노드
-        # spawn_entity,
-        # rviz_node,
+        spawn_entity,
+        rviz_node,
     ])

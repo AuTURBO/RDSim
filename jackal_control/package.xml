@@ -1,0 +1,33 @@
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>jackal_control</name>
+  <version>1.0.4</version>
+  <description>Controllers for Jackal</description>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/jackal_control</url>
+  <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
+
+  <maintainer email="tbaltovski@clearpathrobotics.com">Tony Baltovski</maintainer>
+  <maintainer email="rkreinin@clearpathrobotics.com">Roni Kreinin</maintainer>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>controller_manager</depend>
+  <depend>diff_drive_controller</depend>
+  <depend>imu_filter_madgwick</depend>
+  <depend>interactive_marker_twist_server</depend>
+  <depend>jackal_description</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>joint_trajectory_controller</depend>
+  <depend>joy</depend>
+  <depend>robot_localization</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>teleop_twist_joy</depend>
+  <depend>twist_mux</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

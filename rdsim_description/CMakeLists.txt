@@ -20,7 +20,7 @@ endif()
 # 의존성을 찾습니다: ament_cmake 및 xacro
 find_package(ament_cmake REQUIRED)
 find_package(xacro REQUIRED)
-
+find_package(urdf REQUIRED)
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
 install(
   DIRECTORY launch rviz worlds urdf gazebo models include meshes
@@ -37,5 +37,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+ament_export_dependencies(xacro)
+ament_export_dependencies(urdf)
 # ament 패키지를 생성합니다.
 ament_package()

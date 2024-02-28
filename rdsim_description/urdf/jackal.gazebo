@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot>
+
+  <gazebo>
+    <plugin name="$(arg prefix)gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>$(arg gazebo_controllers)</parameters>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="$(arg prefix)imu_link">
+    <sensor name="$(arg prefix)imu_sensor" type="imu">
+    <plugin filename="libgazebo_ros_imu_sensor.so" name="$(arg prefix)imu_plugin">
+        <ros>
+          <namespace>$(arg prefix)</namespace>
+          <remapping>~/out:=imu/data_raw</remapping>
+        </ros>
+        <initial_orientation_as_reference>false</initial_orientation_as_reference>
+      </plugin>
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="$(arg prefix)gps_link">
+    <sensor name="$(arg prefix)gps_sensor" type="gps">
+    <plugin filename="libgazebo_ros_gps_sensor.so" name="$(arg prefix)gps_plugin">
+        <ros>
+          <namespace>$(arg prefix)</namespace>
+          <remapping>~/out:=gps/data</remapping>
+        </ros>
+      </plugin>
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="chassis_link">
+    <material>Gazebo/DarkGrey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+    <gazebo reference="imu_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="navsat_link">
+    <material>Gazebo/DarkGrey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  <gazebo reference="front_fender_link">
+    <material>Gazebo/Yellow</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  <gazebo reference="rear_fender_link">
+    <material>Gazebo/Yellow</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+</robot>
