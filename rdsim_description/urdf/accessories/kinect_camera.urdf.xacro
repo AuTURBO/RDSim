@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect_camera"> 
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <xacro:macro name="kinect_camera" params="path:='$(find rdsim_description)/config/sensor_params.yaml'">
+
+    <!-- Extracting values from the params -->
+    <xacro:property name="yaml_path" value="$(find rdsim_description)/config/sensor_params.yaml" />
+    <xacro:property name="dict_yaml" value="${xacro.load_yaml(yaml_path)}" />
+    <xacro:property name="camera" value="${dict_yaml['camera']}" />
+    <xacro:property name="name" value="${camera['name']}" />
+    <xacro:property name="parent" value="${camera['parent']}" />
+    <xacro:property name="hz" value="${camera['hz']}" />
+    <xacro:property name="horizontal_fov" value="${camera['horizontal_fov']}" />
+    <xacro:property name="min_depth" value="${camera['depth_min']}" />
+    <xacro:property name="max_depth" value="${camera['depth_max']}" />
+    <xacro:property name="image_width" value="${camera['image_width']}" />
+    <xacro:property name="image_height" value="${camera['image_height']}" />
+    <xacro:property name="clip_near" value="${camera['clip_near']}" />
+    <xacro:property name="clip_far" value="${camera['clip_far']}" />
+
+    <!-- KINECT CAMERA -->
+
+    <link name="${name}"/>
+
+    <joint name="${name}_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.37911 -0.0031858 0.1"/>
+        <parent link="base_link"/>
+        <child link="${name}"/>
+    </joint>
+
+    <link name="${name}_optical"/>
+
+    <joint name="${name}_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+      <parent link="${name}"/>
+      <child link="${name}_optical"/>
+    </joint>
+
+    <gazebo reference="${name}">
+        <sensor name="${name}" type="depth">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>${hz}</update_rate>
+            <camera>
+                <horizontal_fov>${horizontal_fov}</horizontal_fov>
+                <image>
+                    <format>R8G8B8</format>
+                    <width>${image_width}</width>
+                    <height>${image_height}</height>
+                </image>
+                <clip>
+                    <near>${clip_near}</near>
+                    <far>${clip_far}</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <ros>
+                    <namespace>/</namespace>
+                </ros>
+                <frame_name>${name}_optical</frame_name>
+                <min_depth>${min_depth}</min_depth>
+                <max_depth>${max_depth}</max_depth>
+            </plugin>
+        </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

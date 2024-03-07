@@ -1894,7 +1894,7 @@
       </pose>
       <uri>model://fountain</uri>
     </include>
-
+<!-- 
     <include>
       <name>gazebo_42</name>
       <pose>
@@ -1906,7 +1906,7 @@
       3.14
       </pose>
       <uri>model://gazebo</uri>
-    </include>
+    </include> -->
 
     <include>
       <name>pier_43</name>
