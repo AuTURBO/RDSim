@@ -144,9 +144,9 @@ def generate_launch_description():
 
         # 위에서 정의한 노드들을 실행합니다.
         # 로봇의 상태를 퍼블리시하는 노드
-        # joint_state_publisher_node,
+        joint_state_publisher_node,
         robot_state_publisher_node,
-        # joint_state_publisher_gui_node,
+        joint_state_publisher_gui_node,
 
         # 로봇을 gazebo에 스폰하는 노드
         spawn_entity,

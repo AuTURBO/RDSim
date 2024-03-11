@@ -1,5 +1,6 @@
+<?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" />
+  <xacro:include filename="$(find rdsim_description)/urdf/accessories/VLP-16.urdf.xacro" />
 
   <xacro:macro name="vlp16_mount" params="prefix parent_link topic height:=0.1 *origin">
     <link name="${prefix}_vlp16_mount" />
@@ -7,14 +8,14 @@
     <link name="${prefix}_vlp16_plate">
       <visual>
         <geometry>
-          <box size="0.1 0.1 0.002" />
+          <box size="0.11 0.1 0.002" />
         </geometry>
         <material name="black" />
         <origin xyz="0 0 -0.001" rpy="0 0 0" />
       </visual>
     </link>
 
-    <link name="${prefix}_vlp16_leg1">
+    <!-- <link name="${prefix}_vlp16_leg1">
       <visual>
         <geometry>
           <cylinder length="${height}" radius="0.003" />
@@ -57,15 +58,16 @@
         </material>
         <origin xyz="0 0 ${height/2}" rpy="0 0 0" />
       </visual>
-    </link>
+    </link> -->
 
     <joint name="${prefix}_vlp16_mount_joint" type="fixed">
       <parent link="${parent_link}" />
       <child link="${prefix}_vlp16_mount" />
+      <origin xyz="0.15 0 0.17" rpy="0 0.436332 0" />
       <xacro:insert_block name="origin" />
     </joint>
 
-    <joint name="${prefix}_vlp16_leg1_joint" type="fixed">
+    <!-- <joint name="${prefix}_vlp16_leg1_joint" type="fixed">
       <parent link="${prefix}_mount" />
       <child link="${prefix}_vlp16_leg1" />
       <origin xyz="0.05 0.05 0" rpy="0 0 0" />
@@ -84,7 +86,7 @@
       <parent link="${prefix}_mount" />
       <child link="${prefix}_vlp16_leg4" />
       <origin xyz="-0.05 -0.05 0" rpy="0 0 0" />
-    </joint>
+    </joint> -->
     <joint name="${prefix}_vlp16_plate_joint" type="fixed">
       <parent link="${prefix}_vlp16_mount" />
       <child link="${prefix}_vlp16_plate" />

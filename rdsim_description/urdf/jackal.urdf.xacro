@@ -253,6 +253,41 @@
     <origin xyz="${mount_spacing} 0 0" />
   </joint>
 
+  <!-- AuTURBO modify -->
+  <link name="food_storage_link">
+    <visual>
+      <geometry>
+        <box size="0.4 0.3 0.3" /> 
+      </geometry>
+      <material name="yellow" />
+    </visual>
+  </link>
+
+  <joint name="food_storage_joint" type="fixed">
+    <parent link="mid_mount" />
+    <child link="food_storage_link" />
+    <origin xyz="0 0 0.125" />
+  </joint>
+
+  <link name="front_camera_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.05 0.02" /> 
+      </geometry>
+      <material name="yellow" />
+    </visual>
+  </link>
+
+  <joint name="front_camera_joint" type="fixed">
+    <parent link="mid_mount" />
+    <child link="front_camera_link" />
+    <origin xyz="0.2 0 0.15" />
+  </joint>
+
+  <!-- CAMERA -->
+  <xacro:include filename="$(find rdsim_description)/urdf/accessories/kinect_camera.urdf.xacro" />
+  <xacro:kinect_camera />
+
   <!-- ROS2 controls -->
   <ros2_control name="jackal_hardware" type="system">
     <hardware>

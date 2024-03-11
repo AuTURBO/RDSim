@@ -2,6 +2,13 @@
 
 <sdf version="1.6">
   <world name="default">
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+        <ros>
+          <namespace>/gazebo</namespace>
+        </ros>
+
+        <update_rate>1.0</update_rate>
+    </plugin>
 
     <gui>
      <camera name="user_camera">
@@ -2979,7 +2986,7 @@
       </pose>
       <uri>model://fountain</uri>
     </include>
-
+<!-- 
     <include>
       <name>gazebo_42</name>
       <pose>
@@ -2991,7 +2998,7 @@
       3.14
       </pose>
       <uri>model://gazebo</uri>
-    </include>
+    </include> -->
 
     <include>
       <name>pier_43</name>
