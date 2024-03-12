@@ -1,6 +1,8 @@
 ## RDSim 
 
 ![small_sim_world](./fig/small_sim_world.png)
+![gazebo_screen](./fig/gazebo_screen.png)
+![sensor_display_rviz](./fig/sensor_display_rviz.png)
 
 ### Install && build
 
