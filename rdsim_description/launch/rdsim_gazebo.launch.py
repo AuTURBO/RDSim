@@ -33,7 +33,7 @@ def generate_launch_description():
     start_rviz = LaunchConfiguration('start_rviz') 
     use_sim_time = LaunchConfiguration('use_sim_time', default='True')
     
-    # urdf 파일의 경로를 설정합니다.
+    # robot urdf 파일의 경로를 설정합니다.
     default_model_dir = PathJoinSubstitution(
         [
             FindPackageShare('rdsim_description'),
@@ -41,6 +41,7 @@ def generate_launch_description():
             'jackal.urdf.xacro'
         ]
     )
+
     # rviz 파일의 경로를 설정합니다.
     rviz_config_file = PathJoinSubstitution(
         [
@@ -71,6 +72,7 @@ def generate_launch_description():
             )
         }]
     )
+
     # joint_state_publisher를 실행하는 노드를 설정합니다.
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
@@ -103,7 +105,6 @@ def generate_launch_description():
         output='screen'
     )
 
-
     return LaunchDescription([
         set_gazebo_model_path,
         # 런치 파일에 사용할 인자들을 정의합니다.
@@ -125,7 +126,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             name='model', 
             default_value=default_model_dir,
-            description='Absolute path to robot urdf file'),
+            description='Absolute path to robot urdf file'),      
 
         DeclareLaunchArgument(
             name='rvizconfig',
@@ -151,4 +152,6 @@ def generate_launch_description():
         # 로봇을 gazebo에 스폰하는 노드
         spawn_entity,
         rviz_node,
+
+
     ])
