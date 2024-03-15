@@ -7,12 +7,21 @@
 ## Environment Settings
 ### i) local: Install && build
 
+* Setting GAZEBO_RESOURCE_PATH
+```sh
+echo "export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11:$GAZEBO_RESOURCE_PATH" >> ~/.bashrc
+source ~/.bashrc
+```
+
+* RDSim build
 ```bash
 cd ~/ros2_ws/src 
 git clone https://github.com/AuTURBO/RDSim.git
+cd ~/ros2_ws/src/RDSim/gazebo_sfm_plugin/lightsfm && make && sudo make install
 cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.bash
 ```
 
+* Install dependency
 ```bash
 sudo apt-get update
 sudo apt install ros-humble-robot-localization -y

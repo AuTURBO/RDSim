@@ -18,16 +18,35 @@ from launch_ros.descriptions import ParameterValue
 from launch.actions import SetEnvironmentVariable
 import os
 
+from scripts import GazeboRosPaths
+
 def generate_launch_description():
     # 환경 변수 설정
+    model, plugin, media = GazeboRosPaths.get_paths()
+
     gazebo_model_path = os.getenv('GAZEBO_MODEL_PATH', '')
-    new_model_path = os.path.expanduser('~/ros2_ws/src/RDSim/rdsim_gazebo/models')
-    combined_gazebo_model_path = f"{gazebo_model_path}:{new_model_path}" if gazebo_model_path else new_model_path
+    rdsim_gazebo_model_path = os.path.expanduser('~/ros2_ws/src/RDSim/rdsim_gazebo/models')
+    if gazebo_model_path:
+        rdsim_gazebo_model_path = f"{gazebo_model_path}:{rdsim_gazebo_model_path}"
+    combined_gazebo_model_path = f"{model}:{rdsim_gazebo_model_path}"
+
+    gazebo_resource_path = os.getenv('GAZEBO_RESOURCE_PATH', '')
+    combined_gazebo_resource_path = f"{gazebo_resource_path}:{media}" if gazebo_resource_path else media
 
     # GAZEBO_MODEL_PATH 환경 변수 설정
     set_gazebo_model_path = SetEnvironmentVariable(
         name='GAZEBO_MODEL_PATH',
         value=combined_gazebo_model_path
+    )
+    # GAZEBO_PLUGIN_PATH 환경 변수 설정
+    set_gazebo_plugin_path = SetEnvironmentVariable(
+        name='GAZEBO_PLUGIN_PATH',
+        value=plugin
+    )
+    # GAZEBO_MODEL_PATH 환경 변수 설정
+    set_gazebo_resource_path = SetEnvironmentVariable(
+        name='GAZEBO_RESOURCE_PATH',
+        value=combined_gazebo_resource_path
     )
 
     start_rviz = LaunchConfiguration('start_rviz') 
@@ -107,6 +126,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         set_gazebo_model_path,
+        set_gazebo_plugin_path,
+        set_gazebo_resource_path,
         # 런치 파일에 사용할 인자들을 정의합니다.
         DeclareLaunchArgument(
             'start_rviz',
