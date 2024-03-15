@@ -1,10 +1,11 @@
-## RDSim 
+# RDSim: Robo Delivery Simulator
 
 ![small_sim_world](./fig/small_sim_world.png)
 ![gazebo_screen](./fig/gazebo_screen.png)
 ![sensor_display_rviz](./fig/sensor_display_rviz.png)
 
-### Install && build
+## Environment Settings
+### i) local: Install && build
 
 ```bash
 cd ~/ros2_ws/src 
@@ -14,34 +15,35 @@ cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.bas
 
 ```bash
 sudo apt-get update
-sudo apt install ros-humble-robot-localization
-sudo apt install ros-humble-imu-filter-madgwick
-sudo apt install ros-humble-controller-manager
-sudo apt install ros-humble-controller-manager
-sudo apt install ros-humble-diff-drive-controller
-sudo apt install ros-humble-imu-filter-madgwick
-sudo apt install ros-humble-interactive-marker-twist-server
+sudo apt install ros-humble-robot-localization -y
+sudo apt install ros-humble-imu-filter-madgwick -y
+sudo apt install ros-humble-controller-manager -y
+sudo apt install ros-humble-controller-manager -y
+sudo apt install ros-humble-diff-drive-controller -y
+sudo apt install ros-humble-imu-filter-madgwick -y
+sudo apt install ros-humble-interactive-marker-twist-server -y
 # jackal-description 패키지는 아래의 추가 사항 참고
-sudo apt install ros-humble-joint-state-broadcaster
-sudo apt install ros-humble-joint-trajectory-controller
-sudo apt install ros-humble-joint-state-publisher-gui
-sudo apt install ros-humble-joy
-sudo apt install ros-humble-robot-localization
-sudo apt install ros-humble-robot-state-publisher
-sudo apt install ros-humble-teleop-twist-joy
-sudo apt install ros-humble-twist-mux
+sudo apt install ros-humble-joint-state-broadcaster -y
+sudo apt install ros-humble-joint-trajectory-controller -y
+sudo apt install ros-humble-joint-state-publisher-gui -y
+sudo apt install ros-humble-joy -y
+sudo apt install ros-humble-robot-localization -y
+sudo apt install ros-humble-robot-state-publisher -y
+sudo apt install ros-humble-teleop-twist-joy -y
+sudo apt install ros-humble-twist-mux -y
 ```
 
-### With docker
+### ii) docker
 
 > Docker environment tested on Ubuntu 22.04, nvidia
 > 
 
 ```bash
 # in rdsim main directory
-cd docker && ./run_command.sh 
+cd ~/ros2_ws/src/RDSim/docker && ./run_command.sh 
 ```
 
+## Execute RDSim
 ### Gazebo world launch
 
 > Gazebo 맵만 실행시킬 경우
@@ -51,7 +53,7 @@ cd docker && ./run_command.sh
 ros2 launch rdsim_gazebo rdsim_gazebo_world.launch.py  
 ```
 
-Robot Display launch 
+### Robot Display launch 
 
 > Gazebo 없이 로봇의 tf를 확인하고 싶을 경우
 > 
@@ -59,6 +61,7 @@ Robot Display launch
 ```bash
 ros2 launch rdsim_description rdsim_description.launch.py 
 ```
+
 
 ---
 
