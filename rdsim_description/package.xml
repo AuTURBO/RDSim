@@ -32,5 +32,6 @@
   <export>
     <!-- 빌드 타입을 ament_cmake로 정의합니다. -->
     <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/models" plugin_path="${prefix}/../../lib" gazebo_media_path="${prefix}" />
   </export>
 </package>
