@@ -91,8 +91,10 @@ ros2 launch jackal_control control.launch.py
 ```bash
 ros2 launch jackal_control teleop_base.launch.py 
 ```
+### teleop cmd 
 
-###
+> cmd_vel을 통해 제어하기 때문에 다음 명령어를 통해 제어할 수 있습니다.
+> 
 
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
