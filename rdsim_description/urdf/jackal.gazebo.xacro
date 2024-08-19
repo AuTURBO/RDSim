@@ -12,47 +12,63 @@
 
 <!-- wheel -->
   <gazebo reference="front_left_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
-    <kp>500000000.0</kp>
-    <kd>10000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1000.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.1</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/Grey</material>
+    <ode>
+      <slip1>0.01</slip1>
+      <slip2>0.01</slip2>
+    </ode>
   </gazebo>
 
   <gazebo reference="rear_left_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
-    <kp>500000000.0</kp>
-    <kd>10000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1000.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.1</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/Grey</material>
+    <ode>
+      <slip1>0.01</slip1>
+      <slip2>0.01</slip2>
+    </ode>
   </gazebo>
 
   <gazebo reference="front_right_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
-    <kp>500000000.0</kp>
-    <kd>10000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1000.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.1</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/Grey</material>
+    <ode>
+      <slip1>0.01</slip1>
+      <slip2>0.01</slip2>
+    </ode>
   </gazebo>
 
   <gazebo reference="rear_right_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
-    <kp>500000000.0</kp>
-    <kd>10000.0</kd>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1000.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.1</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/Grey</material>
+    <ode>
+      <slip1>0.01</slip1>
+      <slip2>0.01</slip2>
+    </ode>
   </gazebo>
 
 
