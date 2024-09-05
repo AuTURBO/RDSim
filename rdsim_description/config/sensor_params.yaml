@@ -16,7 +16,7 @@ lidar:
   topic: ouster_points
   frame_id: ouster
   hz: 10
-  lasers: 32
+  lasers: 1
   samples: 512
   collision_range: 0.3
   min_range: 0.9

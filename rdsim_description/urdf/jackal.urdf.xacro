@@ -45,7 +45,7 @@
       </collision>
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="0.477"/>
+        <mass value="10.477"/>
         <inertia
           ixx="0.0013" ixy="0" ixz="0"
           iyy="0.0024" iyz="0"
@@ -92,7 +92,7 @@
   <xacro:wheel prefix="rear_left">
     <origin xyz="${-wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
   </xacro:wheel>
-  <xacro:wheel prefix="rear_right">
+  <xacro:wheel prefix="rear_right">f
     <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
   </xacro:wheel>
 
@@ -117,11 +117,12 @@
       <geometry>
         <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
       </geometry>
+      
     </collision>
     <inertial>
       <!-- Center of mass -->
       <origin xyz="0.012  0.002 0.067" rpy="0 0 0"/>
-      <mass value="16.523"/>
+      <mass value="200.523"/>
       <!-- Moments of inertia: ( chassis without wheels ) -->
       <inertia
         ixx="0.3136" ixy="-0.0008" ixz="0.0164"
@@ -261,6 +262,12 @@
       </geometry>
       <material name="yellow" />
     </visual>
+    <collision>
+      <geometry>
+        <box size="0.4 0.3 0.3" />
+        <mass value="10.01"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="food_storage_joint" type="fixed">
@@ -278,7 +285,7 @@
   <xacro:kinect_camera />
 
   <!-- ROS2 controls -->
-  <ros2_control name="jackal_hardware" type="system">
+  <!-- <ros2_control name="jackal_hardware" type="system">
     <hardware>
       <xacro:if value="$(arg is_sim)">
         <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -308,7 +315,7 @@
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
-  </ros2_control>
+  </ros2_control> -->
 
   <!-- Bring in simulation data for Gazebo. -->
   <xacro:if value="$(arg is_sim)">
@@ -320,9 +327,9 @@
        default each one to off.-->
   <xacro:include filename="$(find rdsim_description)/urdf/accessories.urdf.xacro" />
 
-  <!-- 물성치 -->
+  <!-- 물성치 gazebo 플러그인 -->
   <xacro:include filename="$(find rdsim_description)/urdf/jackal.gazebo.xacro" />
 
   <!-- Optional custom includes. -->
-  <xacro:include filename="$(optenv JACKAL_URDF_EXTRAS empty.urdf)" />
+  <!-- <xacro:include filename="$(optenv JACKAL_URDF_EXTRAS empty.urdf)" /> -->
 </robot>

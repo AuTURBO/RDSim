@@ -71,5 +71,26 @@
     </ode>
   </gazebo>
 
+  <!-- gazebo 4wheel drive controller -->
+<gazebo>
+  <plugin name="four_wheel_drive" filename="libgazebo_ros_diff_drive.so">
+    <robotNamespace>/robot</robotNamespace>
+    <left_front_wheel>front_left_wheel_link</left_front_wheel>
+    <right_front_wheel>front_right_wheel_link</right_front_wheel>
+    <left_rear_wheel>rear_left_wheel_link</left_rear_wheel>
+    <right_rear_wheel>rear_right_wheel_link</right_rear_wheel>
+    <wheelSeparation>1.0</wheelSeparation>
+    <wheelDiameter>0.3</wheelDiameter>
+    <torque>10.0</torque>
+    <commandTopic>cmd_vel</commandTopic>
+    <odomTopic>odom</odomTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <publishWheelTF>true</publishWheelTF>
+    <publishTf>true</publishTf>
+  </plugin>
+</gazebo>
+
+
 
 </robot>
