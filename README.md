@@ -82,17 +82,6 @@ ros2 launch rdsim_description rdsim_description.launch.py
 ros2 launch rdsim_description rdsim_gazebo.launch.py 
 ```
 
-### Jackal Controller launch
-
-```bash
-ros2 launch jackal_control control.launch.py 
-```
-
-### Jackal cmd 2 teleop cmd
-
-```bash
-ros2 launch jackal_control teleop_base.launch.py 
-```
 ### teleop cmd 
 
 > cmd_vel을 통해 제어하기 때문에 다음 명령어를 통해 제어할 수 있습니다.
