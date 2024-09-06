@@ -19,10 +19,10 @@
 
       <left_joint>front_left_wheel_joint</left_joint>
       <right_joint>front_right_wheel_joint</right_joint>
-      <wheel_separation>0.35</wheel_separation>
+      <wheel_separation>0.310</wheel_separation>
       <wheel_diameter>0.20</wheel_diameter>
-      <max_wheel_torque>40</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <max_wheel_torque>4000</max_wheel_torque>
+      <max_wheel_acceleration>0.5</max_wheel_acceleration>
       <publish_odom>true</publish_odom>
       <publish_odom_tf>true</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
@@ -32,7 +32,7 @@
   </gazebo>
 
 
-  <gazebo>
+  <!-- <gazebo>
     <plugin name='rear_diff_drive' filename='libgazebo_ros_diff_drive.so'>
       <ros>
         <namespace></namespace>
@@ -52,7 +52,7 @@
       <odometry_frame>odom</odometry_frame>
       <robot_base_frame>base_footprint</robot_base_frame>
     </plugin>
-  </gazebo>
+  </gazebo> -->
 
   <gazebo reference="$(arg prefix)imu_link">
     <sensor name="$(arg prefix)imu_sensor" type="imu">

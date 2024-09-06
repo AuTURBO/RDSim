@@ -40,7 +40,7 @@
   <xacro:sick_lms1xx_mount prefix="rear" topic="rear/scan"/>
 
   <joint name="rear_laser_mount_joint" type="fixed">
-    <origin xyz="0 0 0.002" rpy="0 0 3.141" />>
+    <origin xyz="0 0 0.002" rpy="0 0 3.141" />
     <parent link="rear_mount" />
     <child link="rear_laser_mount" />
   </joint>

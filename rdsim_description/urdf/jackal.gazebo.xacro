@@ -9,75 +9,244 @@
     <material>Gazebo/Grey</material>
   </gazebo>
 
-<!-- food_storage_link -->
-  <gazebo reference="food_storage_link">
-    <material>Gazebo/Yellow</material>
-  </gazebo>
-
-
 <!-- wheel -->
-  <gazebo reference="front_left_wheel_link">
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>1000.0</kd>
+  <gazebo reference="wheel_left_link">
+    <mu1>10000000</mu1>
+    <mu2>10000000</mu2>
+    <kp>500000000.0</kp>
+    <kd>10000.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.1</maxVel>
     <fdir1>1 0 0</fdir1>
-    <material>Gazebo/Grey</material>
-    <ode>
-      <slip1>0.01</slip1>
-      <slip2>0.01</slip2>
-    </ode>
+    <material>Gazebo/FlatBlack</material>
   </gazebo>
 
-  <gazebo reference="rear_left_wheel_link">
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>1000.0</kd>
+  <gazebo reference="wheel_right_link">
+    <mu1>10000000</mu1>
+    <mu2>10000000</mu2>
+    <kp>500000000.0</kp>
+    <kd>10000.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.1</maxVel>
     <fdir1>1 0 0</fdir1>
-    <material>Gazebo/Grey</material>
-    <ode>
-      <slip1>0.01</slip1>
-      <slip2>0.01</slip2>
-    </ode>
+    <material>Gazebo/FlatBlack</material>
   </gazebo>
 
-  <gazebo reference="front_right_wheel_link">
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
-    <kp>1000000.0</kp>
+<!-- caster -->
+  <gazebo reference="caster_link">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>10000000.0</kp>
     <kd>1000.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
-    <material>Gazebo/Grey</material>
-    <ode>
-      <slip1>0.01</slip1>
-      <slip2>0.01</slip2>
-    </ode>
+    <maxVel>1.0</maxVel>
+    <material>Gazebo/FlatBlack</material>
   </gazebo>
 
-  <gazebo reference="rear_right_wheel_link">
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>1000.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
-    <material>Gazebo/Grey</material>
-    <ode>
-      <slip1>0.01</slip1>
-      <slip2>0.01</slip2>
-    </ode>
+<!-- imu -->
+  <gazebo reference="imu_link">
+    <material>Gazebo/Yellow</material>
+    <sensor name="imu_sensor" type="imu">
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <ros>
+          <!-- <namespace>/demo</namespace> -->
+          <remapping>~/out:=imu</remapping>
+        </ros>
+        <initial_orientation_as_reference>true</initial_orientation_as_reference>
+      </plugin>
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>${imu_visual}</visualize>
+     <imu>
+     	<angular_velocity>
+     	  <x>
+     	    <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+    </sensor>
   </gazebo>
 
+<!-- differential type config -->
+  <gazebo>
+    <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+      <ros>
+        <namespace></namespace>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+        <remapping>odom:=odom</remapping>
+      </ros>
 
+      <left_joint>wheel_left_joint</left_joint>
+      <right_joint>wheel_right_joint</right_joint>
+      <wheel_separation>0.62</wheel_separation>
+      <wheel_diameter>0.40</wheel_diameter>
+      <max_wheel_torque>40</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+    </plugin>
+  </gazebo>
 
+  <gazebo reference="lidar_link">
+    <material>Gazebo/Blue</material>
+    <sensor type="ray" name="lds_lfcd_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <always_on>true</always_on>
+      <update_rate>5.0</update_rate>
+      <visualize>false</visualize>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>
+            <max_angle>6.28319</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.30</min>
+          <max>10.5</max>
+          <resolution>0.015</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace></namespace>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <gazebo reference="camera_link">
+    <material>Gazebo/Blue</material>
+    <sensor type="camera" name="camera">
+      <update_rate>30</update_rate>
+      <always_on>true</always_on>
+      <visualize>${camera_visual}</visualize>
+      <camera>
+          <horizontal_fov>1.085595</horizontal_fov>
+          <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+          </image>
+          <clip>
+              <near>0.03</near>
+              <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame.
+                  That pixel's noise value is added to each of its color
+                  channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <ros>
+          <namespace></namespace>
+          <remapping>image_raw:=image_raw</remapping>
+          <remapping>camera_info:=camera_info</remapping>
+        </ros>
+      </plugin>
+    </sensor>
+  </gazebo>
 
-
+  <gazebo reference="os_sensor">
+    <material>Gazebo/Blue</material>
+    <sensor type="ray" name="sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <always_on>true</always_on>
+      <update_rate>10.0</update_rate> <!-- 업데이트 속도 줄임 -->
+      <visualize>false</visualize> <!-- 비주얼라이제이션 비활성화 -->
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples> <!-- 가로 샘플 수 줄임 -->
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>32</samples> <!-- 수직 샘플 수 줄임 -->
+            <resolution>1</resolution>
+            <min_angle>-0.261799</min_angle>
+            <max_angle>0.261799</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.30</min>
+          <max>50.0</max> <!-- 범위 줄임 -->
+          <resolution>0.01</resolution>
+        </range>
+        <!-- 소음 설정 제거 -->
+      </ray>
+      <plugin name="gazebo_ros_ray_sensor" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace></namespace>
+          <remapping>~/out:=/ouster/points</remapping>
+        </ros>
+        <output_type>sensor_msgs/PointCloud2</output_type>
+      </plugin>
+    </sensor>
+  </gazebo>
 </robot>
