@@ -1,7 +1,7 @@
 # RDSim: Robo Delivery Simulator
 
 ![small_sim_world](./documents/small_sim_world.png)
-![glim_result](./documents/glim.png)
+![glim_result](./documents/glim_result.png)
 
 ## Environment Settings
 ### i) local: Install && build
