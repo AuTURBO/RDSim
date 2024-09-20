@@ -139,10 +139,10 @@
 
   <gazebo reference="lidar_link">
     <material>Gazebo/Blue</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
+    <sensor type="ray" name="laser">
       <pose>0 0 0 0 0 0</pose>
       <always_on>true</always_on>
-      <update_rate>5.0</update_rate>
+      <update_rate>10.0</update_rate>
       <visualize>false</visualize>
       <ray>
         <scan>
@@ -164,12 +164,13 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_ray_sensor.so">
+      <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
         <ros>
           <namespace></namespace>
           <remapping>~/out:=scan</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>lidar_link</frame_name>
       </plugin>
     </sensor>
   </gazebo>
@@ -181,24 +182,21 @@
       <always_on>true</always_on>
       <visualize>${camera_visual}</visualize>
       <camera>
-          <horizontal_fov>1.085595</horizontal_fov>
-          <image>
-              <width>640</width>
-              <height>480</height>
-              <format>R8G8B8</format>
-          </image>
-          <clip>
-              <near>0.03</near>
-              <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <!-- Noise is sampled independently per pixel on each frame.
-                  That pixel's noise value is added to each of its color
-                  channels, which at that point lie in the range [0,1]. -->
-            <mean>0.0</mean>
-            <stddev>0.007</stddev>
-          </noise>
+        <horizontal_fov>1.085595</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.03</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
       </camera>
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <ros>
@@ -209,13 +207,13 @@
       </plugin>
     </sensor>
   </gazebo>
+  
 
   <gazebo reference="os_sensor">
     <material>Gazebo/Blue</material>
     <sensor type="ray" name="sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
-      <always_on>true</always_on>
+      <always_on>false</always_on>
       <update_rate>10.0</update_rate> <!-- 업데이트 속도 줄임 -->
       <visualize>false</visualize> <!-- 비주얼라이제이션 비활성화 -->
       <ray>
@@ -246,6 +244,7 @@
           <remapping>~/out:=/ouster/points</remapping>
         </ros>
         <output_type>sensor_msgs/PointCloud2</output_type>
+        <frame_name>os_sensor</frame_name>
       </plugin>
     </sensor>
   </gazebo>

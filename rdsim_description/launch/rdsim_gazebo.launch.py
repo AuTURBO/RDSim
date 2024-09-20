@@ -57,7 +57,7 @@ def generate_launch_description():
         [
             FindPackageShare('rdsim_description'),
             'urdf',
-            'jackal.urdf.xacro'
+            'rdsim.urdf.xacro'
         ]
     )
 
@@ -120,7 +120,7 @@ def generate_launch_description():
     spawn_entity = Node(
     	package='gazebo_ros', 
     	executable='spawn_entity.py',
-        arguments=['-entity', 'jackal', '-topic', 'robot_description', '-x', '0.5', '-y', '0.5', '-z', '0.01'],
+        arguments=['-entity', 'rdsim', '-topic', 'robot_description', '-x', '0.5', '-y', '0.5', '-z', '0.01'],
         output='screen'
     )
 

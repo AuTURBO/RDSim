@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="mobile_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="rdsim" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- <xacro:arg name="prefix" default="" /> -->
   <!-- Define robot constants -->
   <xacro:property name="base_width" value="0.62"/>
@@ -277,5 +277,5 @@
 
   <!-- Include gazebo macro -->
   
-  <xacro:include filename="$(find rdsim_description)/urdf/jackal.gazebo.xacro" />
+  <xacro:include filename="$(find rdsim_description)/urdf/rdsim.gazebo.xacro" />
 </robot>

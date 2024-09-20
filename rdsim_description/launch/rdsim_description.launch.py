@@ -24,7 +24,7 @@ def generate_launch_description():
         [
             FindPackageShare('rdsim_description'),
             'urdf',
-            'jackal.urdf.xacro'
+            'rdsim.urdf.xacro'
         ]
     )
     # rviz 파일의 경로를 설정합니다.

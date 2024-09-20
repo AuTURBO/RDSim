@@ -23,7 +23,7 @@ find_package(xacro REQUIRED)
 find_package(urdf REQUIRED)
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
 install(
-  DIRECTORY launch rviz urdf meshes config
+  DIRECTORY launch rviz urdf  
   DESTINATION share/${PROJECT_NAME}
 )
 
