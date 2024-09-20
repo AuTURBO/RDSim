@@ -14,6 +14,7 @@ source ~/.bashrc
 
 * RDSim build
 ```bash
+$ git clone --recursive https://github.com/AuTURBO/RDSim.git
 $ sudo rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
 $ cd ~/ros2_ws/src 
 $ git clone https://github.com/AuTURBO/RDSim.git
