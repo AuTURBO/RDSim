@@ -1,0 +1,3 @@
+[submodule "rdsim_submodules/navigation2"]
+	path = rdsim_submodules/navigation2
+	url = https://github.com/AuTURBO/RDSim_navigation2.git
