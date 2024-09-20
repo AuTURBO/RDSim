@@ -14,32 +14,33 @@ source ~/.bashrc
 
 * RDSim build
 ```bash
-cd ~/ros2_ws/src 
-git clone https://github.com/AuTURBO/RDSim.git
-cd ~/ros2_ws/src/RDSim/gazebo_sfm_plugin/lightsfm && make && sudo make install
-cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.bash
+$ sudo rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
+$ cd ~/ros2_ws/src 
+$ git clone https://github.com/AuTURBO/RDSim.git
+$ cd ~/ros2_ws/src/RDSim/gazebo_sfm_plugin/lightsfm && make && sudo make install
+$ cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.bash
 ```
 
 * Install dependency
 ```bash
-sudo apt-get update
-sudo apt install ros-humble-robot-localization -y
-sudo apt install ros-humble-imu-filter-madgwick -y
-sudo apt install ros-humble-controller-manager -y
-sudo apt install ros-humble-controller-manager -y
-sudo apt install ros-humble-diff-drive-controller -y
-sudo apt install ros-humble-imu-filter-madgwick -y
-sudo apt install ros-humble-interactive-marker-twist-server -y
+$ sudo apt-get update
+$ sudo apt install ros-humble-robot-localization -y
+$ sudo apt install ros-humble-imu-filter-madgwick -y
+$ sudo apt install ros-humble-controller-manager -y
+$ sudo apt install ros-humble-controller-manager -y
+$ sudo apt install ros-humble-diff-drive-controller -y
+$ sudo apt install ros-humble-imu-filter-madgwick -y
+$ sudo apt install ros-humble-interactive-marker-twist-server -y
 # jackal-description 패키지는 아래의 추가 사항 참고
-sudo apt install ros-humble-joint-state-broadcaster -y
-sudo apt install ros-humble-joint-trajectory-controller -y
-sudo apt install ros-humble-joint-state-publisher-gui -y
-sudo apt install ros-humble-joy -y
-sudo apt install ros-humble-robot-localization -y
-sudo apt install ros-humble-robot-state-publisher -y
-sudo apt install ros-humble-teleop-twist-joy -y
-sudo apt install ros-humble-twist-mux -y
-sudo apt-get install libgazebo-dev
+$ sudo apt install ros-humble-joint-state-broadcaster -y
+$ sudo apt install ros-humble-joint-trajectory-controller -y
+$ sudo apt install ros-humble-joint-state-publisher-gui -y
+$ sudo apt install ros-humble-joy -y
+$ sudo apt install ros-humble-robot-localization -y
+$ sudo apt install ros-humble-robot-state-publisher -y
+$ sudo apt install ros-humble-teleop-twist-joy -y
+$ sudo apt install ros-humble-twist-mux -y
+$ sudo apt-get install libgazebo-dev
 
 ```
 
