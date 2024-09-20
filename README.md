@@ -3,6 +3,7 @@
 ![small_sim_world](./documents/small_sim_world.png)
 ![gazebo_screen](./documents/gazebo_screen.png)
 ![sensor_display_rviz](./documents/sensor_display_rviz.png)
+![glim_result](./documents/glim.png)
 
 ## Environment Settings
 ### i) local: Install && build
