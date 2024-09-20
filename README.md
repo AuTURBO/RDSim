@@ -2,6 +2,9 @@
 
 ![small_sim_world](./documents/small_sim_world.png)
 ![glim_result](./documents/glim_result.png)
+![nav2](./documents/nav2.png)
+
+
 
 ## Environment Settings
 ### i) local: Install && build
