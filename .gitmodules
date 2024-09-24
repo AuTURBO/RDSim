@@ -1,3 +1,7 @@
 [submodule "rdsim_submodules/navigation2"]
 	path = rdsim_submodules/navigation2
 	url = https://github.com/AuTURBO/RDSim_navigation2.git
+[submodule "rdsim_submodules/spatio_temporal_voxel_layer"]
+	path = rdsim_submodules/spatio_temporal_voxel_layer
+	url = https://github.com/SteveMacenski/spatio_temporal_voxel_layer
+	branch = humble
