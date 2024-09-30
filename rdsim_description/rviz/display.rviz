@@ -9,6 +9,8 @@ Panels:
         - /RobotModel1
         - /TF1
         - /TF1/Frames1
+        - /PointCloud22
+        - /PointCloud23
       Splitter Ratio: 0.5
     Tree Height: 892
   - Class: rviz_common/Selection
@@ -63,52 +65,25 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        chassis_link:
+          Value: true
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        follow_camera_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        follow_camera_top_view:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        food_storage_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_fender_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_laser:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_laser_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_left_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_right_wheel_link:
+        caster_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -117,66 +92,23 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        kinect_camera:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        kinect_camera_optical:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        mid_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        mid_vlp16_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        mid_vlp16_plate:
+          Value: true
+        lidar_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        navsat_link:
+        os_sensor:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rear_fender_link:
+        wheel_left_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rear_laser:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rear_laser_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_left_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rear_right_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_base_link:
+        wheel_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -194,57 +126,29 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base_footprint:
+          Value: true
         base_link:
           Value: false
-        chassis_link:
+        camera_depth_frame:
           Value: true
-        follow_camera_base_link:
+        camera_link:
           Value: true
-        follow_camera_top_view:
-          Value: true
-        food_storage_link:
-          Value: true
-        front_fender_link:
-          Value: true
-        front_laser:
-          Value: true
-        front_laser_mount:
-          Value: true
-        front_left_wheel_link:
-          Value: true
-        front_mount:
-          Value: true
-        front_right_wheel_link:
+        caster_link:
           Value: true
         imu_link:
           Value: true
-        kinect_camera:
+        lidar_link:
           Value: true
-        kinect_camera_optical:
+        map:
           Value: true
-        mid_mount:
+        odom:
           Value: true
-        mid_vlp16_mount:
+        os_sensor:
           Value: true
-        mid_vlp16_plate:
+        wheel_left_link:
           Value: true
-        navsat_link:
-          Value: true
-        rear_fender_link:
-          Value: true
-        rear_laser:
-          Value: true
-        rear_laser_mount:
-          Value: true
-        rear_left_wheel_link:
-          Value: true
-        rear_mount:
-          Value: true
-        rear_right_wheel_link:
-          Value: true
-        velodyne:
-          Value: true
-        velodyne_base_link:
+        wheel_right_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -252,46 +156,27 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          chassis_link:
-            front_fender_link:
-              {}
-            front_left_wheel_link:
-              {}
-            front_right_wheel_link:
+        base_footprint:
+          base_link:
+            camera_link:
+              camera_depth_frame:
+                {}
+            caster_link:
               {}
             imu_link:
               {}
-            mid_mount:
-              follow_camera_base_link:
-                follow_camera_top_view:
-                  {}
-              food_storage_link:
-                {}
-              front_mount:
-                front_laser_mount:
-                  front_laser:
-                    {}
-              mid_vlp16_mount:
-                mid_vlp16_plate:
-                  velodyne_base_link:
-                    velodyne:
-                      {}
-              rear_mount:
-                rear_laser_mount:
-                  rear_laser:
-                    {}
-            navsat_link:
+            lidar_link:
               {}
-            rear_fender_link:
+            os_sensor:
               {}
-            rear_left_wheel_link:
-              {}
-            rear_right_wheel_link:
-              {}
-          kinect_camera:
-            kinect_camera_optical:
-              {}
+          wheel_left_link:
+            {}
+          wheel_right_link:
+            {}
+        map:
+          {}
+        odom:
+          {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -340,7 +225,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 0
@@ -358,14 +243,82 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /mid/points
+        Value: /ouster/points
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 13.820167541503906
+        Min Value: -3.0526511669158936
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: AxisColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 0
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 1
+      Size (m): 0.009999999776482582
+      Style: Points
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /globalmap
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 0
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 2
+      Size (m): 0.009999999776482582
+      Style: Points
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /aligned_points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -408,7 +361,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 4.720782279968262
+      Distance: 28.228225708007812
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -423,10 +376,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.409797728061676
+      Pitch: 0.7597978711128235
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.45039236545562744
+      Yaw: 3.1316874027252197
     Saved:
       - Class: rviz_default_plugins/Orbit
         Distance: 6.040907382965088
@@ -603,4 +556,4 @@ Window Geometry:
     collapsed: false
   Width: 1920
   X: 0
-  Y: 183
+  Y: 0
