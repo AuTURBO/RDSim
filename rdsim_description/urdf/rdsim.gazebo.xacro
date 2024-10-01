@@ -219,7 +219,7 @@
       <ray>
         <scan>
           <horizontal>
-            <samples>360</samples> <!-- 가로 샘플 수 줄임 -->
+            <samples>1024</samples> <!-- 가로 샘플 수 줄임 -->
             <resolution>1</resolution>
             <min_angle>-3.14159</min_angle>
             <max_angle>3.14159</max_angle>
