@@ -22,10 +22,10 @@ find_package(ament_cmake REQUIRED)
 find_package(xacro REQUIRED)
 
 
-add_subdirectory(thridparty/fast_gicp)
-add_subdirectory(thridparty/hdl_global_localization)
-add_subdirectory(thridparty/hdl_localization)
-add_subdirectory(thridparty/ndt_omp)
+# add_subdirectory(thridparty/ndt_omp)
+# add_subdirectory(thridparty/fast_gicp)
+# add_subdirectory(thridparty/hdl_global_localization)
+# add_subdirectory(thridparty/hdl_localization)
 
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
 install(

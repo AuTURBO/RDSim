@@ -11,9 +11,9 @@ from ament_index_python.packages import get_package_share_directory
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
-
-
-def generate_launch_description():
+from launch.substitutions import PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
+def generate_launch_description(): 
 
     # Importtant, required arguments
     points_topic = LaunchConfiguration("points_topic", default="/ouster/points")
@@ -22,10 +22,21 @@ def generate_launch_description():
     )
     imu_topic = LaunchConfiguration("imu_topic", default="/imu")
     globalmap_pcd = DeclareLaunchArgument(
-        "globalmap_pcd",
-        default_value="/home/kdw/slam_ws/src/glim_ros2/map.pcd",
-        description="Path to the global map PCD file",
+        'globalmap_pcd',
+        default_value=PathJoinSubstitution(
+            [
+                FindPackageShare('rdsim_nav2'),
+                'map',
+                'map.pcd'
+            ]
+        )
     )
+    
+    # globalmap_pcd = DeclareLaunchArgument(
+    #     "globalmap_pcd",
+    #     default_value="/home/kdw/slam_ws/src/glim_ros2/map.pcd",
+    #     description="Path to the global map PCD file",
+    # )
 
     # arguments
     use_sim_time = LaunchConfiguration("use_sim_time", default="true")
@@ -50,7 +61,7 @@ def generate_launch_description():
         name="lidar_tf",
         package="tf2_ros",
         executable="static_transform_publisher",
-        arguments=["0.0", "0.0", "0.0", "0", "0", "0", "1", "odom", "base_link"],
+        arguments=["0.0", "0.0", "0.0", "0", "0", "0", "1", "odom", "base_footprint"],
     )
 
     container = ComposableNodeContainer(
