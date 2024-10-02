@@ -44,6 +44,7 @@ $ sudo apt install ros-humble-robot-localization -y
 $ sudo apt install ros-humble-robot-state-publisher -y
 $ sudo apt install ros-humble-teleop-twist-joy -y
 $ sudo apt install ros-humble-twist-mux -y
+$sudo apt install ros-humble-spatio-temporal-voxel-layer -y
 $ sudo apt-get install libgazebo-dev
 
 ```
