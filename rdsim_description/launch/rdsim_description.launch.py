@@ -18,7 +18,7 @@ from launch_ros.descriptions import ParameterValue
 def generate_launch_description():
 
     start_rviz = LaunchConfiguration('start_rviz')
-    
+
     # urdf 파일의 경로를 설정합니다.
     default_model_dir = PathJoinSubstitution(
         [
@@ -55,7 +55,7 @@ def generate_launch_description():
         name='joint_state_publisher',
         condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui'))
     )
-    
+
     joint_state_publisher_gui_node = Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
@@ -84,14 +84,14 @@ def generate_launch_description():
             'use_sim',
             default_value='true',
             description='Start robot in Gazebo simulation'),
-            
+
         DeclareLaunchArgument(
             name='gui',
             default_value='True',
             description='Flag to enable joint_state_publisher_gui'),
 
         DeclareLaunchArgument(
-            name='model', 
+            name='model',
             default_value=default_model_dir,
             description='Absolute path to robot urdf file'),
 
@@ -99,7 +99,7 @@ def generate_launch_description():
             name='rvizconfig',
             default_value=rviz_config_file,
             description='Absolute path to rviz config file'),
-            
+
         DeclareLaunchArgument(
             name='use_sim_time',
             default_value='True',

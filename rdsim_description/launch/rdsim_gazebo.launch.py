@@ -49,9 +49,9 @@ def generate_launch_description():
         value=combined_gazebo_resource_path
     )
 
-    start_rviz = LaunchConfiguration('start_rviz') 
+    start_rviz = LaunchConfiguration('start_rviz')
     use_sim_time = LaunchConfiguration('use_sim_time', default='True')
-    
+
     # robot urdf 파일의 경로를 설정합니다.
     default_model_dir = PathJoinSubstitution(
         [
@@ -77,7 +77,7 @@ def generate_launch_description():
             'small_city.world'
         ]
     )
-    
+
     # robot_state_publisher를 실행하는 노드를 설정합니다.
 
     robot_state_publisher_node = Node(
@@ -99,7 +99,7 @@ def generate_launch_description():
         name='joint_state_publisher',
         condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui'))
     )
-    
+
     joint_state_publisher_gui_node = Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
@@ -115,10 +115,10 @@ def generate_launch_description():
             output='screen',
             condition=IfCondition(start_rviz)
     )
-    
+
     # gazebo를 실행하여 월드를 불러옵니다.
     spawn_entity = Node(
-    	package='gazebo_ros', 
+    	package='gazebo_ros',
     	executable='spawn_entity.py',
         arguments=['-entity', 'rdsim', '-topic', 'robot_description', '-x', '0.5', '-y', '0.5', '-z', '0.01'],
         output='screen'
@@ -131,29 +131,29 @@ def generate_launch_description():
         # 런치 파일에 사용할 인자들을 정의합니다.
         DeclareLaunchArgument(
             'start_rviz',
-            default_value='true',
+            default_value='false',
             description='Whether execute rviz2'),
 
         DeclareLaunchArgument(
             'use_sim',
             default_value='true',
             description='Start robot in Gazebo simulation'),
-            
+
         DeclareLaunchArgument(
             name='gui',
             default_value='True',
             description='Flag to enable joint_state_publisher_gui'),
 
         DeclareLaunchArgument(
-            name='model', 
+            name='model',
             default_value=default_model_dir,
-            description='Absolute path to robot urdf file'),      
+            description='Absolute path to robot urdf file'),
 
         DeclareLaunchArgument(
             name='rvizconfig',
             default_value=rviz_config_file,
             description='Absolute path to rviz config file'),
-            
+
         DeclareLaunchArgument(
             name='use_sim_time',
             default_value='True',

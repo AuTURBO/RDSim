@@ -14,7 +14,7 @@ import os
 
 def generate_launch_description():
     # 환경 변수 설정
-    gazebo_model_path = os.getenv('G`AZEBO_MODEL_PATH', '')
+    gazebo_model_path = os.getenv('GAZEBO_MODEL_PATH', '')
     new_model_path = os.path.expanduser('~/ros2_ws/src/RDSim/rdsim_gazebo/models')
     combined_gazebo_model_path = f"{gazebo_model_path}:{new_model_path}" if gazebo_model_path else new_model_path
 
@@ -40,7 +40,7 @@ def generate_launch_description():
             'use_sim',
             default_value='true',
             description='Start robot in Gazebo simulation'),
-            
+
         DeclareLaunchArgument(
             name='use_sim_time',
             default_value='True',
