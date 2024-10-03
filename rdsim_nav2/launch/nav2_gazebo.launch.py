@@ -69,12 +69,15 @@ def generate_launch_description():
         ]
     )
 
-    rviz_config_file = PathJoinSubstitution(
-        [
-            FindPackageShare('rdsim_nav2'),
-            'rviz',
-            'nav2.rviz'
-        ]
+    rviz_config_file = LaunchConfiguration(
+        'rviz_config_file',
+        default=PathJoinSubstitution(
+            [
+                FindPackageShare('rdsim_nav2'),
+                'rviz',
+                'nav2.rviz'
+            ]
+        )
     )
 
     default_bt_xml_filename = PathJoinSubstitution(
