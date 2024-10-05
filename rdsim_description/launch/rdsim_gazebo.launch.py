@@ -172,5 +172,5 @@ def generate_launch_description():
 
         # 로봇을 gazebo에 스폰하는 노드
         spawn_entity,
-        rviz_node,
+        # rviz_node,
     ])
