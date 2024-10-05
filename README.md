@@ -42,6 +42,7 @@ $ sudo apt install ros-humble-robot-state-publisher -y
 $ sudo apt install ros-humble-teleop-twist-joy -y
 $ sudo apt install ros-humble-twist-mux -y
 $ sudo apt-get install libgazebo-dev
+
 # Naivigation
 $sudo apt install ros-humble-spatio-temporal-voxel-layer -y
 # localization 
@@ -97,4 +98,10 @@ ros2 launch rdsim_description rdsim_gazebo.launch.py
 
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+### Execute everything with a single lunch file
+
+```bash
+ros2 laucnh rdsim_gazebo rdsim_navigation.launch.py
 ```
