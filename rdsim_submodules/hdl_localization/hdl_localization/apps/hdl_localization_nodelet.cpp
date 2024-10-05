@@ -59,7 +59,7 @@ public:
     invert_gyro = declare_parameter<bool>("invert_gyro", false);
     if (use_imu) {
       RCLCPP_INFO(get_logger(), "enable imu-based prediction");
-      imu_sub = create_subscription<sensor_msgs::msg::Imu>("/gpsimu_driver/imu_data", 256, std::bind(&HdlLocalizationNodelet::imu_callback, this, std::placeholders::_1));
+      imu_sub = create_subscription<sensor_msgs::msg::Imu>("/imu", 256, std::bind(&HdlLocalizationNodelet::imu_callback, this, std::placeholders::_1));
     }
     points_sub = create_subscription<sensor_msgs::msg::PointCloud2>("/ouster/points", 5, std::bind(&HdlLocalizationNodelet::points_callback, this, std::placeholders::_1));
 
