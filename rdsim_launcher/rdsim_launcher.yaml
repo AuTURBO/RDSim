@@ -1,0 +1,22 @@
+session_name: rdsim_launcher launch
+
+environment:
+  MISSION_NAME: rdsim_launcher
+options:
+  default-command: /bin/bash
+
+windows:
+- window_name: dev window 
+  focus: true
+  layout: tiled
+  shell_command_before:
+    - export DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+  panes:
+    # - shell_command: # 1. rdsim robot gazebo simulation launch
+    #   - ros2 launch rdsim_description rdsim_gazebo.launch.py  
+    - shell_command: # 2. rdsim nav2 launch 
+      - ros2 launch rdsim_nav2 nav2_gazebo.launch.py 
+    - shell_command: # 3. rdsim localization launch
+      - ros2 launch rdsim_localization hdl_localization.launch.py 
+    - shell_command: # 4. teleop_twist_keyboard 
+      - ros2 run teleop_twist_keyboard teleop_twist_keyboard 

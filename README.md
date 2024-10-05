@@ -24,32 +24,29 @@ $ cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.b
 
 * Install dependency
 ```bash
-$ sudo apt-get update
-$ sudo apt install ros-humble-robot-localization -y
-$ sudo apt install ros-humble-imu-filter-madgwick -y
-$ sudo apt install ros-humble-controller-manager -y
-$ sudo apt install ros-humble-controller-manager -y
-$ sudo apt install ros-humble-diff-drive-controller -y
-$ sudo apt install ros-humble-imu-filter-madgwick -y
-$ sudo apt install ros-humble-interactive-marker-twist-server -y
-# jackal-description 패키지는 아래의 추가 사항 참고
-$ sudo apt install ros-humble-joint-state-broadcaster -y
-$ sudo apt install ros-humble-joint-trajectory-controller -y
-$ sudo apt install ros-humble-joint-state-publisher-gui -y
-$ sudo apt install ros-humble-joy -y
-$ sudo apt install ros-humble-robot-localization -y
-$ sudo apt install ros-humble-robot-state-publisher -y
-$ sudo apt install ros-humble-teleop-twist-joy -y
-$ sudo apt install ros-humble-twist-mux -y
-$ sudo apt-get install libgazebo-dev
-
-# Naivigation
-$sudo apt install ros-humble-spatio-temporal-voxel-layer -y
-# localization 
-$ sudo apt-get install ros-humble-pcl-ros -y
-$ sudo apt install ros-humble-pcl-conversions -y
-$ sudo apt install ros-humble-rclcpp-components -y
-
+$ sudo apt-get update && sudo apt install -y \
+    ros-humble-robot-localization \
+    ros-humble-imu-filter-madgwick \
+    ros-humble-controller-manager \
+    ros-humble-diff-drive-controller \
+    ros-humble-interactive-marker-twist-server \
+    ros-humble-joint-state-broadcaster \
+    ros-humble-joint-trajectory-controller \
+    ros-humble-joint-state-publisher-gui \
+    ros-humble-joy \
+    ros-humble-robot-state-publisher \
+    ros-humble-teleop-twist-joy \
+    ros-humble-twist-mux \
+    libgazebo-dev \
+    ros-humble-spatio-temporal-voxel-layer \
+    ros-humble-pcl-ros \
+    ros-humble-pcl-conversions \
+    ros-humble-rclcpp-components \
+    tmux \
+    tmuxp \
+    && echo 'alias start_rdsim="cd ~/ros2_ws/src/RDSim/rdsim_launcher && tmuxp load rdsim_launcher.yaml"' >> ~/.bashrc \
+    && echo 'alias end="tmux kill-session && killgazebo"' >> ~/.bashrc \ 
+    && source ~/.bashrc
 
 ```
 
@@ -64,6 +61,19 @@ cd ~/ros2_ws/src/RDSim/docker && ./run_command.sh
 ```
 
 ## Execute RDSim
+### All launch 
+
+```bash
+start_rdsim
+```
+
+### All Down
+```bash
+end
+```
+
+
+
 ### Gazebo world launch
 
 > Gazebo 맵만 실행시킬 경우

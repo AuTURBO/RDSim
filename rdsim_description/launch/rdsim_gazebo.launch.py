@@ -179,5 +179,10 @@ def generate_launch_description():
 
         # 로봇을 gazebo에 스폰하는 노드
         spawn_entity,
+<<<<<<< HEAD
         rviz_node,
     ])
+=======
+        # rviz_node,
+    ])
+>>>>>>> 8746976ada808e2ac0137c67de2f668733cff170
