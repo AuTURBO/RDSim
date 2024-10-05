@@ -71,6 +71,23 @@
   
 
 
+<!-- gps link -->
+  <link name="gps_link">
+    <visual>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+      
+  </link>
+  <!-- gps joint -->
+  <joint name="gps_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="gps_link"/>
+    <origin xyz="0 0 0.01"/>
+  </joint>
+
+
   <link name="wheel_left_link">
     <visual>
       <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
