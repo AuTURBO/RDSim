@@ -12,8 +12,8 @@ windows:
   shell_command_before:
     - export DATE=$(date "+%Y-%m-%d_%H-%M-%S")
   panes:
-    - shell_command: # 1. rdsim robot gazebo simulation launch
-      - ros2 launch rdsim_description rdsim_gazebo.launch.py  
+    # - shell_command: # 1. rdsim robot gazebo simulation launch
+    #   - ros2 launch rdsim_description rdsim_gazebo.launch.py  
     - shell_command: # 2. rdsim nav2 launch 
       - ros2 launch rdsim_nav2 nav2_gazebo.launch.py 
     - shell_command: # 3. rdsim localization launch

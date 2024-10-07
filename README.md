@@ -109,3 +109,9 @@ ros2 launch rdsim_description rdsim_gazebo.launch.py
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+
+### Execute everything with a single lunch file
+
+```bash
+ros2 laucnh rdsim_gazebo rdsim_navigation.launch.py
+```
