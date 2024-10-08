@@ -104,6 +104,7 @@ bt_navigator:
     - nav2_spin_cancel_bt_node
     - nav2_back_up_cancel_bt_node
     - nav2_drive_on_heading_cancel_bt_node
+    - nav2_compute_path_to_topology_action_bt_node
 
 bt_navigator_navigate_through_poses_rclcpp_node:
   ros__parameters:
