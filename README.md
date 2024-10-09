@@ -42,6 +42,7 @@ $ sudo apt-get update && sudo apt install -y \
     ros-humble-pcl-ros \
     ros-humble-pcl-conversions \
     ros-humble-rclcpp-components \
+    ros-bumble-xacro* \
     tmux \
     tmuxp \
     && echo 'alias start_rdsim="cd ~/ros2_ws/src/RDSim/rdsim_launcher && tmuxp load rdsim_launcher.yaml"' >> ~/.bashrc \
