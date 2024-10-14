@@ -1,0 +1,36 @@
+topology_map:
+  vertexs:
+    - id: 0
+      pose:
+        x: 0
+        y: 0
+        z: 0
+        yaw: 0
+      status: "ACTIVE"
+    - id: 1
+      pose:
+        x: 3.0
+        y: 0
+        z: 0
+        yaw: 0
+      status: "ACTIVE"
+    - id: 2
+      pose:
+        x: 3.0
+        y: 2.0
+        z: 0
+        yaw: 0
+      status: "ACTIVE"
+    - id: 3
+      pose:
+        x: 6.0
+        y: 0.0
+        z: 0
+        yaw: 0
+      status: "ACTIVE"
+  edges: [
+    0, 1, 0, 0,
+    1, 0, 1, 1,
+    0, 1, 0, 0,
+    0, 1, 0, 0
+  ]

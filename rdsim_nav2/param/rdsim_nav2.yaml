@@ -104,6 +104,7 @@ bt_navigator:
     - nav2_spin_cancel_bt_node
     - nav2_back_up_cancel_bt_node
     - nav2_drive_on_heading_cancel_bt_node
+    - nav2_compute_goal_to_topology_bt_node
 
 bt_navigator_navigate_through_poses_rclcpp_node:
   ros__parameters:
@@ -392,6 +393,11 @@ map_server:
     # Overridden in launch by the "map" launch configuration or provided default value.
     # To use in yaml, remove the default "map" value in the tb3_simulation_launch.py file & provide full path to map below.
     yaml_filename: ""
+
+topology_map_server:
+  ros__parameters:
+    use_sim_time: True
+    topology_yaml_filename: ""
 
 map_saver:
   ros__parameters:
