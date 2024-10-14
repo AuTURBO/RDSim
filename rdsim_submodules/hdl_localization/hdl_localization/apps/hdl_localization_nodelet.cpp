@@ -195,9 +195,9 @@ private:
   }
 
   void points_callback(const sensor_msgs::msg::PointCloud2::ConstSharedPtr points_msg) {
-    RCLCPP_INFO(get_logger(), "");
-    RCLCPP_INFO(get_logger(), "points_callback");
-    RCLCPP_INFO(get_logger(), "");
+    // RCLCPP_INFO(get_logger(), "");
+    // RCLCPP_INFO(get_logger(), "points_callback");
+    // RCLCPP_INFO(get_logger(), "");
 
     std::lock_guard<std::mutex> estimator_lock(pose_estimator_mutex);
     if (!pose_estimator) {
