@@ -105,6 +105,7 @@ bt_navigator:
     - nav2_back_up_cancel_bt_node
     - nav2_drive_on_heading_cancel_bt_node
     - nav2_compute_goal_to_topology_bt_node
+  
 
 bt_navigator_navigate_through_poses_rclcpp_node:
   ros__parameters:
@@ -114,38 +115,114 @@ bt_navigator_navigate_to_pose_rclcpp_node:
   ros__parameters:
     use_sim_time: True
 
+
 controller_server:
   ros__parameters:
-    use_sim_time: True
     controller_frequency: 20.0
-    min_x_velocity_threshold: 0.001
-    min_y_velocity_threshold: 0.5
-    min_theta_velocity_threshold: 0.001
-    progress_checker_plugins: ["progress_checker"] # progress_checker_plugin: "progress_checker" For Humble and older
-    goal_checker_plugins: ["goal_checker"]
-    controller_plugins: ["FollowPath"]
-
-    progress_checker:
-      plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.5
-      movement_time_allowance: 10.0
-    goal_checker:
-      plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
-      stateful: True
     FollowPath:
-      plugin: "nav2_rotation_shim_controller::RotationShimController"
-      primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-      angular_dist_threshold: 0.785
-      forward_sampling_distance: 0.5
-      rotate_to_heading_angular_vel: 1.8
-      max_angular_accel: 3.2
-      simulate_ahead_time: 1.0
-      rotate_to_goal_heading: false
+      plugin: "nav2_mppi_controller::MPPIController"
+      time_steps: 56
+      model_dt: 0.05
+      batch_size: 1000
+      vx_std: 0.1
+      vy_std: 0.1
+      wz_std: 0.2
+      vx_max: 0.5 # 0.25 
+      vx_min: -0.5
+      vy_max: 0.25 # 0.25
+      wz_max: 0.2 # 1.9
+      ax_max: 3.0 # 1.5
+      ax_min: -3.0 # -1.5
+      ay_max: 3.0 # 1.5
+      az_max: 3.5 # 1.7
+      iteration_count: 1
+      prune_distance: 1.7
+      transform_tolerance: 0.1
+      temperature: 0.3
+      gamma: 0.015
+      motion_model: "DiffDrive" # "Omni" or "DiffDrive"
+      visualize: true
+      reset_period: 1.0 # (only in Humble)
+      regenerate_noises: false
+      TrajectoryVisualizer:
+        trajectory_step: 5
+        time_step: 3
+      AckermannConstraints:
+        min_turning_r: 0.2
+      critics: ["ConstraintCritic", "CostCritic", "GoalCritic", "GoalAngleCritic", "PathAlignCritic", "PathFollowCritic", "PathAngleCritic", "PreferForwardCritic"]
+      ConstraintCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 4.0
+      GoalCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 5.0
+        threshold_to_consider: 0.7 # 1.4
+      GoalAngleCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 3.0
+        threshold_to_consider: 0.5
+      PreferForwardCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 5.0
+        threshold_to_consider: 0.5
+      ObstaclesCritic:
+        enabled: true
+        cost_power: 1
+        repulsion_weight: 1.5
+        critical_weight: 20.0
+        consider_footprint: false
+        collision_cost: 10000.0
+        collision_margin_distance: 0.1
+        near_goal_distance: 0.5
+        inflation_radius: 0.55 # (only in Humble)
+        cost_scaling_factor: 10.0 # (only in Humble)
+      CostCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 3.81
+        critical_cost: 300.0
+        consider_footprint: true
+        collision_cost: 1000000.0
+        near_goal_distance: 1.0
+        trajectory_point_step: 2
+      PathAlignCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 14.0
+        max_path_occupancy_ratio: 0.05
+        trajectory_point_step: 4
+        threshold_to_consider: 0.5
+        offset_from_furthest: 20
+        use_path_orientations: false
+      PathFollowCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 5.0
+        offset_from_furthest: 5
+        threshold_to_consider: 1.4
+      PathAngleCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 2.0
+        offset_from_furthest: 4
+        threshold_to_consider: 0.5
+        max_angle_to_furthest: 1.0
+        mode: 0
+      # VelocityDeadbandCritic:
+      #   enabled: true
+      #   cost_power: 1
+      #   cost_weight: 35.0
+      #   deadband_velocities: [0.05, 0.05, 0.05]
+      # TwirlingCritic:
+      #   enabled: true
+      #   twirling_cost_power: 1
+      #   twirling_cost_weight: 10.0
 
-      # Primary controller params can be placed here below
-      # ...
+
 
 global_costmap:
   global_costmap:
@@ -503,7 +580,7 @@ collision_monitor:
     polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
     PolygonStop:
       type: "polygon"
-      points: [0.7, 0.7, 0.7, -0.7, -0.7, -0.7, -0.7, 0.7]
+      points: [0.35, 0.35, 0.35, -0.35, -0.35, -0.35, -0.35, 0.35]
       action_type: "stop"
       max_points: 3
       visualize: True
@@ -511,10 +588,10 @@ collision_monitor:
       enabled: True
     PolygonSlow:
       type: "polygon"
-      points: [1.5, 1.5, 1.5, -1.5, -1.5, -1.5, -1.5, 1.5]
+      points: [0.7, 0.7, 0.7, -0.7, -0.7, -0.7, -0.7, 0.7]
       action_type: "slowdown"
       max_points: 3
-      slowdown_ratio: 0.7
+      slowdown_ratio: 1.0
       visualize: True
       polygon_pub_topic: "polygon_slowdown"
       enabled: True

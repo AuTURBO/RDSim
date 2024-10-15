@@ -17,8 +17,8 @@ source ~/.bashrc
 ```bash
 $ cd ~/ros2_ws/src 
 $ git clone --recursive https://github.com/AuTURBO/RDSim.git
-$ sudo rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
-$ cd ~/ros2_ws/src/RDSim/gazebo_sfm_plugin/lightsfm && make && sudo make install
+$ cd ~/ros2_ws/src/RDSim/ && git submodule update --remote
+$ rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
 $ cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.bash
 ```
 
