@@ -22,7 +22,6 @@ find_package(ament_cmake REQUIRED)
 find_package(xacro REQUIRED)
 
 
-add_subdirectory(plugins/gazebo_sfm_plugin)
 
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
 install(
