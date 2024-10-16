@@ -70,7 +70,7 @@ public:
     initialpose_sub =
       create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/initialpose", 8, std::bind(&HdlLocalizationNodelet::initialpose_callback, this, std::placeholders::_1));
 
-    pose_pub = create_publisher<nav_msgs::msg::Odometry>("/odom", 5);
+    pose_pub = create_publisher<nav_msgs::msg::Odometry>("/hdl_odom", 5);
     aligned_pub = create_publisher<sensor_msgs::msg::PointCloud2>("/aligned_points", 5);
     status_pub = create_publisher<msg::ScanMatchingStatus>("/status", 5);
 

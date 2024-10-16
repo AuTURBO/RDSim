@@ -105,6 +105,7 @@ bt_navigator:
     - nav2_back_up_cancel_bt_node
     - nav2_drive_on_heading_cancel_bt_node
     - nav2_compute_goal_to_topology_bt_node
+  
 
 bt_navigator_navigate_through_poses_rclcpp_node:
   ros__parameters:
@@ -135,17 +136,30 @@ controller_server:
       yaw_goal_tolerance: 0.25
       stateful: True
     FollowPath:
-      plugin: "nav2_rotation_shim_controller::RotationShimController"
-      primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-      angular_dist_threshold: 0.785
-      forward_sampling_distance: 0.5
-      rotate_to_heading_angular_vel: 1.8
+      plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+      desired_linear_vel: 0.5
+      lookahead_dist: 0.6
+      min_lookahead_dist: 0.3
+      max_lookahead_dist: 0.9
+      lookahead_time: 1.5
+      rotate_to_heading_angular_vel: 1.2
+      transform_tolerance: 0.1
+      use_velocity_scaled_lookahead_dist: false
+      min_approach_linear_velocity: 0.05
+      approach_velocity_scaling_dist: 0.6
+      use_collision_detection: true
+      max_allowed_time_to_collision_up_to_carrot: 1.0
+      use_regulated_linear_velocity_scaling: true
+      use_fixed_curvature_lookahead: false
+      curvature_lookahead_dist: 0.25
+      use_cost_regulated_linear_velocity_scaling: false
+      regulated_linear_scaling_min_radius: 0.9
+      regulated_linear_scaling_min_speed: 0.25
+      use_rotate_to_heading: true
+      allow_reversing: false
+      rotate_to_heading_min_angle: 0.785
       max_angular_accel: 3.2
-      simulate_ahead_time: 1.0
-      rotate_to_goal_heading: false
-
-      # Primary controller params can be placed here below
-      # ...
+      max_robot_pose_search_dist: 10.0
 
 global_costmap:
   global_costmap:
@@ -503,7 +517,7 @@ collision_monitor:
     polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
     PolygonStop:
       type: "polygon"
-      points: [0.7, 0.7, 0.7, -0.7, -0.7, -0.7, -0.7, 0.7]
+      points: [0.35, 0.35, 0.35, -0.35, -0.35, -0.35, -0.35, 0.35]
       action_type: "stop"
       max_points: 3
       visualize: True
@@ -511,10 +525,10 @@ collision_monitor:
       enabled: True
     PolygonSlow:
       type: "polygon"
-      points: [1.5, 1.5, 1.5, -1.5, -1.5, -1.5, -1.5, 1.5]
+      points: [0.7, 0.7, 0.7, -0.7, -0.7, -0.7, -0.7, 0.7]
       action_type: "slowdown"
       max_points: 3
-      slowdown_ratio: 0.7
+      slowdown_ratio: 1.0
       visualize: True
       polygon_pub_topic: "polygon_slowdown"
       enabled: True
