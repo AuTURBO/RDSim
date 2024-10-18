@@ -70,7 +70,7 @@ public:
     initialpose_sub =
       create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/initialpose", 8, std::bind(&HdlLocalizationNodelet::initialpose_callback, this, std::placeholders::_1));
 
-    pose_pub = create_publisher<nav_msgs::msg::Odometry>("/odom", 5);
+    pose_pub = create_publisher<nav_msgs::msg::Odometry>("/hdl_odom", 5);
     aligned_pub = create_publisher<sensor_msgs::msg::PointCloud2>("/aligned_points", 5);
     status_pub = create_publisher<msg::ScanMatchingStatus>("/status", 5);
 
@@ -195,9 +195,9 @@ private:
   }
 
   void points_callback(const sensor_msgs::msg::PointCloud2::ConstSharedPtr points_msg) {
-    RCLCPP_INFO(get_logger(), "");
-    RCLCPP_INFO(get_logger(), "points_callback");
-    RCLCPP_INFO(get_logger(), "");
+    // RCLCPP_INFO(get_logger(), "");
+    // RCLCPP_INFO(get_logger(), "points_callback");
+    // RCLCPP_INFO(get_logger(), "");
 
     std::lock_guard<std::mutex> estimator_lock(pose_estimator_mutex);
     if (!pose_estimator) {

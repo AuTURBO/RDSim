@@ -129,7 +129,7 @@
       <wheel_diameter>0.40</wheel_diameter>
       <max_wheel_torque>40</max_wheel_torque>
       <max_wheel_acceleration>1.0</max_wheel_acceleration>
-      <publish_odom>false</publish_odom>
+      <publish_odom>true</publish_odom>
       <publish_odom_tf>false</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
       <odometry_frame>odom</odometry_frame>

@@ -34,6 +34,7 @@ def generate_launch_description():
     start_rviz = LaunchConfiguration('start_rviz')
     use_sim = LaunchConfiguration('use_sim')
     map_yaml_file = LaunchConfiguration('map_yaml_file')
+    topology_map_yaml_file = LaunchConfiguration('topology_map_yaml_file')
     params_file = LaunchConfiguration('params_file')
     default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
     autostart = LaunchConfiguration('autostart')
@@ -47,6 +48,16 @@ def generate_launch_description():
                 FindPackageShare('rdsim_nav2'),
                 'map',
                 'map.yaml'
+            ]
+        )
+    )
+    topology_map_yaml_file = LaunchConfiguration(
+        'topology_map_yaml_file',
+        default=PathJoinSubstitution(
+            [
+                FindPackageShare('rdsim_nav2'),
+                'map',
+                'topology.yaml'
             ]
         )
     )
@@ -103,7 +114,10 @@ def generate_launch_description():
             'map_yaml_file',
             default_value=map_yaml_file,
             description='Full path to map file to load'),
-
+        DeclareLaunchArgument(
+            'topology_map_yaml_file',
+            default_value=topology_map_yaml_file,
+            description='Full path to topology map file to load'),
         DeclareLaunchArgument(
             'params_file',
             default_value=params_file,
@@ -134,6 +148,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([nav2_launch_file_dir, '/bringup_launch.py']),
             launch_arguments={
                 'map': map_yaml_file,
+                'topology_map': topology_map_yaml_file,
                 'use_sim_time': use_sim,
                 'params_file': params_file,
                 'default_bt_xml_filename': default_bt_xml_filename,
