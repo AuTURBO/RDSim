@@ -72,7 +72,7 @@ def generate_launch_description():
 
     ## Parameters (replace frame names in case of namespacing)
     rl_params_file = os.path.join(local_dir, "config", "dual_ekf_navsat_params.yaml")
-    print ("########################################################  rl_params_file: ", rl_params_file)
+    #print ("########################################################  rl_params_file: ", rl_params_file)
     rdsim_gps_localization = GroupAction([
 
         Node(
