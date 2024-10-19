@@ -130,7 +130,7 @@
       <max_wheel_torque>40</max_wheel_torque>
       <max_wheel_acceleration>1.0</max_wheel_acceleration>
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>false</publish_odom_tf>
+      <publish_odom_tf>true</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
       <odometry_frame>odom</odometry_frame>
       <robot_base_frame>base_footprint</robot_base_frame>
@@ -174,7 +174,7 @@
       </plugin>
     </sensor>
   </gazebo>
-  
+
   <gazebo reference="camera_link">
     <material>Gazebo/Blue</material>
     <sensor type="camera" name="camera">
@@ -207,7 +207,7 @@
       </plugin>
     </sensor>
   </gazebo>
-  
+
 
   <gazebo reference="os_sensor">
     <material>Gazebo/Blue</material>

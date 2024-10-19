@@ -13,7 +13,7 @@ from launch_ros.actions import Node
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
 from launch.substitutions import PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
-def generate_launch_description(): 
+def generate_launch_description():
 
     # Importtant, required arguments
     points_topic = LaunchConfiguration("points_topic", default="/ouster/points")
@@ -31,7 +31,7 @@ def generate_launch_description():
             ]
         )
     )
-    
+
     # globalmap_pcd = DeclareLaunchArgument(
     #     "globalmap_pcd",
     #     default_value="/home/kdw/slam_ws/src/glim_ros2/map.pcd",
@@ -45,6 +45,10 @@ def generate_launch_description():
     use_imu = LaunchConfiguration("use_imu", default="true")
     invert_imu_acc = LaunchConfiguration("invert_imu_acc", default="false")
     invert_imu_gyro = LaunchConfiguration("invert_imu_gyro", default="false")
+
+    send_tf_transforms = LaunchConfiguration("send_tf_transforms", default="false")
+    send_odom_topic = LaunchConfiguration("send_odom_topic", default="true")
+
     use_global_localization = LaunchConfiguration(
         "use_global_localization", default="false"
     )
@@ -113,6 +117,8 @@ def generate_launch_description():
                     {"init_ori_y": 0.0},
                     {"init_ori_z": 0.0},
                     {"use_global_localization": use_global_localization},
+                    {"send_tf_transforms": send_tf_transforms}, # custom
+                    {"send_odom_topic": send_odom_topic}, # custom
                 ],
             ),
         ],

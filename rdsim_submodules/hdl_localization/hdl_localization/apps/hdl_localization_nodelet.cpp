@@ -45,8 +45,9 @@ public:
     tf_broadcaster = std::make_shared<tf2_ros::TransformBroadcaster>(this);
 
     robot_odom_frame_id = declare_parameter<std::string>("robot_odom_frame_id", "robot_odom");
-    odom_child_frame_id = declare_parameter<std::string>("odom_child_frame_id", "base_link");
+    odom_child_frame_id = declare_parameter<std::string>("odom_child_frame_id", "base_footprint");
     send_tf_transforms = declare_parameter<bool>("send_tf_transforms", true);
+    send_odom_topic = declare_parameter<bool>("send_odom_topic", true);
     cool_time_duration = declare_parameter<double>("cool_time_duration", 0.5);
     reg_method = declare_parameter<std::string>("reg_method", "NDT_OMP");
     ndt_neighbor_search_method = declare_parameter<std::string>("ndt_neighbor_search_method", "DIRECT7");
@@ -195,9 +196,9 @@ private:
   }
 
   void points_callback(const sensor_msgs::msg::PointCloud2::ConstSharedPtr points_msg) {
-    // RCLCPP_INFO(get_logger(), "");
-    // RCLCPP_INFO(get_logger(), "points_callback");
-    // RCLCPP_INFO(get_logger(), "");
+    //RCLCPP_INFO(get_logger(), "");
+    //RCLCPP_INFO(get_logger(), "points_callback");
+    //RCLCPP_INFO(get_logger(), "");
 
     std::lock_guard<std::mutex> estimator_lock(pose_estimator_mutex);
     if (!pose_estimator) {
@@ -455,21 +456,24 @@ private:
     }
 
     // publish the transform
-    nav_msgs::msg::Odometry odom;
-    odom.header.stamp = stamp;
-    odom.header.frame_id = "map";
+    if(send_odom_topic){
 
-    odom.pose.pose = tf2::toMsg(Eigen::Isometry3d(pose.cast<double>()));
-    // odom.pose.pose.position.x = pose_trans.transform.translation.x;
-    // odom.pose.pose.position.y = pose_trans.transform.translation.y;
-    // odom.pose.pose.position.z = pose_trans.transform.translation.z;
-    // odom.pose.pose.orientation = pose_trans.transform.rotation;
-    odom.child_frame_id = odom_child_frame_id;
-    odom.twist.twist.linear.x = 0.0;
-    odom.twist.twist.linear.y = 0.0;
-    odom.twist.twist.angular.z = 0.0;
+      nav_msgs::msg::Odometry odom;
+      odom.header.stamp = stamp;
+      odom.header.frame_id = "map";
 
-    pose_pub->publish(odom);
+      odom.pose.pose = tf2::toMsg(Eigen::Isometry3d(pose.cast<double>()));
+      // odom.pose.pose.position.x = pose_trans.transform.translation.x;
+      // odom.pose.pose.position.y = pose_trans.transform.translation.y;
+      // odom.pose.pose.position.z = pose_trans.transform.translation.z;
+      // odom.pose.pose.orientation = pose_trans.transform.rotation;
+      odom.child_frame_id = odom_child_frame_id;
+      odom.twist.twist.linear.x = 0.0;
+      odom.twist.twist.linear.y = 0.0;
+      odom.twist.twist.angular.z = 0.0;
+
+      pose_pub->publish(odom);
+    }
   }
 
   void publish_scan_matching_status(const std_msgs::msg::Header& header, pcl::PointCloud<pcl::PointXYZI>::ConstPtr aligned) {
@@ -524,6 +528,7 @@ private:
   std::string robot_odom_frame_id;
   std::string odom_child_frame_id;
   bool send_tf_transforms;
+  bool send_odom_topic;
 
   bool use_imu;
   bool invert_acc;

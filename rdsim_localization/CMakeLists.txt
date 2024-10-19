@@ -28,10 +28,14 @@ find_package(xacro REQUIRED)
 # add_subdirectory(thridparty/hdl_localization)
 
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
-install(
-  DIRECTORY launch
+
+install(DIRECTORY
+  launch
+  config
   DESTINATION share/${PROJECT_NAME}
+  USE_SOURCE_PERMISSIONS
 )
+
 
 # 테스트 빌드를 위해 빌드하는 경우, ament_lint_auto를 사용하여 코드 린팅을 수행합니다 (선택 사항)
 if(BUILD_TESTING)
