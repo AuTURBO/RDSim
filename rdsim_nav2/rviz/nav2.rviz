@@ -88,6 +88,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        gps_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         imu_link:
           Alpha: 1
           Show Axes: false
@@ -136,6 +141,8 @@ Visualization Manager:
           Value: true
         caster_link:
           Value: true
+        gps_link:
+          Value: true
         imu_link:
           Value: true
         lidar_link:
@@ -145,6 +152,8 @@ Visualization Manager:
         odom:
           Value: true
         os_sensor:
+          Value: true
+        utm:
           Value: true
         wheel_left_link:
           Value: true
@@ -171,10 +180,14 @@ Visualization Manager:
                   {}
                 os_sensor:
                   {}
+              gps_link:
+                {}
               wheel_left_link:
                 {}
               wheel_right_link:
                 {}
+          utm:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -455,7 +468,7 @@ Visualization Manager:
             Value: /local_plan
           Value: true
         - Class: rviz_default_plugins/MarkerArray
-          Enabled: false
+          Enabled: true
           Name: Trajectories
           Namespaces:
             {}
@@ -465,7 +478,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Reliable
             Value: /marker
-          Value: false
+          Value: true
         - Alpha: 1
           Class: rviz_default_plugins/Polygon
           Color: 25; 255; 0
