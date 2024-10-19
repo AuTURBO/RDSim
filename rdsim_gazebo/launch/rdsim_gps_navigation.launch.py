@@ -72,30 +72,34 @@ def generate_launch_description():
 
     ## Parameters (replace frame names in case of namespacing)
     rl_params_file = os.path.join(local_dir, "config", "dual_ekf_navsat_params.yaml")
+    print ("########################################################  rl_params_file: ", rl_params_file)
     rdsim_gps_localization = GroupAction([
+
+        Node(
+            package='robot_localization',
+            executable='ekf_node',
+            name='ekf_filter_node_map',
+            output='screen',
+            parameters=[rl_params_file, {"use_sim_time": True}], # odom
+            remappings=[
+                ('odometry/filtered', 'odometry/global'),
+                #('odom0', '/wheel_odom')
+                ]
+        ),
 
         # Navsat tranform
         Node(
             package='robot_localization',
             executable='navsat_transform_node',
+            name='navsat_transform',
             output='screen',
             parameters=[rl_params_file, {"use_sim_time": True}],
-            remappings=[('gps/fix', '/gps/gps/data'),
-                        ('imu/data', '/imu'),
-                        ('odometry/filtered', '/odom'),
-                        ('odometry/gps', 'navsat_transform/navsat_odometry'),
-                        ('gps/filtered', 'navsat_transform/filtered_fix')
+            remappings=[('gps/fix', '/gps/gps/data'), # input
+                        ('imu/data', '/imu'), # input
+                        ('gps/filtered', 'navsat_transform/filtered_fix'), # output
+                        ('odometry/gps', 'odometry/gps'), # output
+                        ('odometry/filtered', 'odometry/global'), # input
                         ]
-        ),
-
-        # Global EKF for odom => map tranform
-        Node(
-            package='robot_localization',
-            executable='ekf_node',
-            name='global_ekf_node',
-            output='screen',
-            parameters=[rl_params_file, {"use_sim_time": True}],
-            remappings=[('odometry/filtered', 'global_ekf/odometry_filtered')]
         ),
 
 
