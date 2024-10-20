@@ -11,7 +11,7 @@ ekf_filter_node_map:
     odom_frame: odom
     base_link_frame: base_footprint # the frame id used by the turtlebot's diff drive plugin
     world_frame: map
-    odom0: odom
+    odom0: odom0
     odom0_config: [false, false, false,
                   false, false, false,
                   true,  true,  true,
@@ -20,7 +20,8 @@ ekf_filter_node_map:
     odom0_queue_size: 10
     odom0_differential: false
     odom0_relative: false
-    odom1: odometry/gps
+
+    odom1: odom1 #odometry/gps
     odom1_config: [true,  true,  false,
                   false, false, false,
                   false, false, false,
@@ -29,6 +30,18 @@ ekf_filter_node_map:
     odom1_queue_size: 10
     odom1_differential: false
     odom1_relative: false
+    #odom1_pose_rejection_threshold: 10
+
+    odom2: odom2 #hdl_odom
+    odom2_config: [true,  true,  true,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false]
+    odom2_queue_size: 10
+    odom2_differential: false
+    odom2_relative: false
+
     imu0: imu
     imu0_config: [false, false, false,
                   false,  false,  true,

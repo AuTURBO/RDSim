@@ -82,8 +82,11 @@ def generate_launch_description():
             output='screen',
             parameters=[rl_params_file, {"use_sim_time": True}], # odom
             remappings=[
-                ('odometry/filtered', 'odometry/global'),
-                #('odom0', '/wheel_odom')
+                ('odom1', 'odometry/gps'), # input
+                #('odom2', 'hdl_odom'), # input
+                ('imu', 'imu'), # input
+                ('odom0', 'odom'), # input
+                ('odometry/filtered', 'odometry/global'), # output
                 ]
         ),
 
@@ -100,6 +103,14 @@ def generate_launch_description():
                         ('odometry/gps', 'odometry/gps'), # output
                         ('odometry/filtered', 'odometry/global'), # input
                         ]
+        ),
+
+        # InitialPose topic to SetPose srv
+        Node(
+            package='rdsim_localization',
+            executable='initialpose_to_setpose',
+            name='initialpose_to_setpose',
+            output='screen'
         ),
 
 

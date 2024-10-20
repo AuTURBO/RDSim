@@ -20,7 +20,7 @@ amcl:
     max_beams: 60
     max_particles: 2000
     min_particles: 500
-    odom_frame_id: "amcl_odom"
+    odom_frame_id: "odom"
     pf_err: 0.05
     pf_z: 0.99
     recovery_alpha_fast: 0.0
@@ -41,8 +41,8 @@ amcl:
     set_initial_pose: true
     always_reset_initial_pose: true
     initial_pose:
-      x: 0.0
-      y: 0.0
+      x: 10.0
+      y: 10.0
       z: 0.0
       yaw: 0.0
 
@@ -104,7 +104,7 @@ bt_navigator:
     - nav2_spin_cancel_bt_node
     - nav2_back_up_cancel_bt_node
     - nav2_drive_on_heading_cancel_bt_node
-    #- nav2_compute_goal_to_topology_bt_node
+    - nav2_compute_goal_to_topology_bt_node
 
 
 bt_navigator_navigate_through_poses_rclcpp_node:

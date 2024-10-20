@@ -20,6 +20,9 @@ endif()
 # 의존성을 찾습니다: ament_cmake 및 xacro
 find_package(ament_cmake REQUIRED)
 find_package(xacro REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(robot_localization REQUIRED)
 
 
 # add_subdirectory(thridparty/ndt_omp)
@@ -28,6 +31,19 @@ find_package(xacro REQUIRED)
 # add_subdirectory(thridparty/hdl_localization)
 
 # 설치 구성: 'launch', 'rviz', 'world', 및 'urdf' 디렉토리를 설치 경로로 복사합니다.
+
+# Add the executable and specify the source files
+add_executable(initialpose_to_setpose src/initialpose_to_setpose.cpp)
+# Link the necessary libraries
+ament_target_dependencies(initialpose_to_setpose
+  rclcpp
+  geometry_msgs
+  robot_localization
+)
+
+install(
+  TARGETS initialpose_to_setpose
+  DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
   launch
