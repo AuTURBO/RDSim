@@ -9,7 +9,7 @@
   <!-- gazebo 4wheel drive controller -->
 
 
-  <gazebo>
+  <!-- <gazebo>
     <plugin name='front_diff_drive' filename='libgazebo_ros_diff_drive.so'>
       <ros>
         <namespace></namespace>
@@ -29,7 +29,7 @@
       <odometry_frame>odom</odometry_frame>
       <robot_base_frame>base_footprint</robot_base_frame>
     </plugin>
-  </gazebo>
+  </gazebo> -->
 
 
   <!-- <gazebo>
@@ -54,7 +54,7 @@
     </plugin>
   </gazebo> -->
 
-  <gazebo reference="$(arg prefix)imu_link">
+  <!-- <gazebo reference="$(arg prefix)imu_link">
     <sensor name="$(arg prefix)imu_sensor" type="imu">
     <plugin filename="libgazebo_ros_imu_sensor.so" name="$(arg prefix)imu_plugin">
         <ros>
@@ -80,7 +80,7 @@
       <always_on>true</always_on>
       <update_rate>10</update_rate>
     </sensor>
-  </gazebo>
+  </gazebo> -->
 
   <gazebo reference="base_link">
     <turnGravityOff>false</turnGravityOff>

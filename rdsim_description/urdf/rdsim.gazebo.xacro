@@ -279,4 +279,115 @@
   </gazebo>
 
 
+<!-- 카메라 플러그인 추가 -->
+
+<!-- Front-right camera -->
+<gazebo reference="camera_front_right_link">
+  <sensor type="camera" name="camera_front_right_sensor">
+    <always_on>true</always_on>
+    <update_rate>30.0</update_rate>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>50.0</far>
+      </clip>
+    </camera>
+    <plugin name="camera_front_right_controller" filename="libgazebo_ros_camera.so">
+      <ros>
+        <namespace>camera_front_right</namespace>
+        <remapping>image_raw:=/camera_front_right/image_raw</remapping>
+        <remapping>camera_info:=/camera_front_right/camera_info</remapping>
+      </ros>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<!-- Front-left camera -->
+<gazebo reference="camera_front_left_link">
+  <sensor type="camera" name="camera_front_left_sensor">
+    <always_on>true</always_on>
+    <update_rate>30.0</update_rate>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>50.0</far>
+      </clip>
+    </camera>
+    <plugin name="camera_front_left_controller" filename="libgazebo_ros_camera.so">
+      <ros>
+        <namespace>camera_front_left</namespace>
+        <remapping>image_raw:=/camera_front_left/image_raw</remapping>
+        <remapping>camera_info:=/camera_front_left/camera_info</remapping>
+      </ros>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<!-- Back-right camera -->
+<gazebo reference="camera_back_right_link">
+  <sensor type="camera" name="camera_back_right_sensor">
+    <always_on>true</always_on>
+    <update_rate>30.0</update_rate>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>50.0</far>
+      </clip>
+    </camera>
+    <plugin name="camera_back_right_controller" filename="libgazebo_ros_camera.so">
+      <ros>
+        <namespace>camera_back_right</namespace>
+        <remapping>image_raw:=/camera_back_right/image_raw</remapping>
+        <remapping>camera_info:=/camera_back_right/camera_info</remapping>
+      </ros>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<!-- Back-left camera -->
+<gazebo reference="camera_back_left_link">
+  <sensor type="camera" name="camera_back_left_sensor">
+    <always_on>true</always_on>
+    <update_rate>30.0</update_rate>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>50.0</far>
+      </clip>
+    </camera>
+    <plugin name="camera_back_left_controller" filename="libgazebo_ros_camera.so">
+      <ros>
+        <namespace>camera_back_left</namespace>
+        <remapping>image_raw:=/camera_back_left/image_raw</remapping>
+        <remapping>camera_info:=/camera_back_left/camera_info</remapping>
+      </ros>
+    </plugin>
+  </sensor>
+</gazebo>
+
+
 </robot>
