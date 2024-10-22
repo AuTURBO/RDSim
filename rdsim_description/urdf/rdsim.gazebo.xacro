@@ -284,10 +284,11 @@
 <!-- Front-right camera -->
 <gazebo reference="camera_front_right_link">
   <sensor type="camera" name="camera_front_right_sensor">
+    <visualize>${camera_visual}</visualize>
     <always_on>true</always_on>
     <update_rate>30.0</update_rate>
     <camera>
-      <horizontal_fov>1.047</horizontal_fov>
+      <horizontal_fov>1.347</horizontal_fov>
       <image>
         <width>640</width>
         <height>480</height>
@@ -311,10 +312,11 @@
 <!-- Front-left camera -->
 <gazebo reference="camera_front_left_link">
   <sensor type="camera" name="camera_front_left_sensor">
+    <visualize>${camera_visual}</visualize>
     <always_on>true</always_on>
     <update_rate>30.0</update_rate>
     <camera>
-      <horizontal_fov>1.047</horizontal_fov>
+      <horizontal_fov>1.347</horizontal_fov>
       <image>
         <width>640</width>
         <height>480</height>
@@ -338,10 +340,11 @@
 <!-- Back-right camera -->
 <gazebo reference="camera_back_right_link">
   <sensor type="camera" name="camera_back_right_sensor">
+    <visualize>${camera_visual}</visualize>
     <always_on>true</always_on>
     <update_rate>30.0</update_rate>
     <camera>
-      <horizontal_fov>1.047</horizontal_fov>
+      <horizontal_fov>1.347</horizontal_fov>
       <image>
         <width>640</width>
         <height>480</height>
@@ -365,10 +368,11 @@
 <!-- Back-left camera -->
 <gazebo reference="camera_back_left_link">
   <sensor type="camera" name="camera_back_left_sensor">
+    <visualize>${camera_visual}</visualize>
     <always_on>true</always_on>
     <update_rate>30.0</update_rate>
     <camera>
-      <horizontal_fov>1.047</horizontal_fov>
+      <horizontal_fov>1.347</horizontal_fov>
       <image>
         <width>640</width>
         <height>480</height>
@@ -384,6 +388,34 @@
         <namespace>camera_back_left</namespace>
         <remapping>image_raw:=/camera_back_left/image_raw</remapping>
         <remapping>camera_info:=/camera_back_left/camera_info</remapping>
+      </ros>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<!-- camera_top_link -->
+<gazebo reference="camera_top_link">
+  <sensor type="camera" name="camera_top_sensor">
+    <visualize>${camera_visual}</visualize>
+    <always_on>true</always_on>
+    <update_rate>30.0</update_rate>
+    <camera>
+      <horizontal_fov>1.347</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>50.0</far>
+      </clip>
+    </camera>
+    <plugin name="camera_top_controller" filename="libgazebo_ros_camera.so">
+      <ros>
+        <namespace>camera_top</namespace>
+        <remapping>image_raw:=/camera_top/image_raw</remapping>
+        <remapping>camera_info:=/camera_top/camera_info</remapping>
       </ros>
     </plugin>
   </sensor>

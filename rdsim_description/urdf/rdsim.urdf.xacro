@@ -293,17 +293,17 @@
           <box size="0.015 0.130 0.022"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <box size="0.015 0.130 0.022"/>
         </geometry>
-      </collision>
-      <inertial>
+      </collision> -->
+      <!-- <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <mass value="0.035"/>
         <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
-      </inertial>
+      </inertial> -->
     </link>
     <joint name="${name}_joint" type="fixed">
       <parent link="base_link"/>
@@ -317,6 +317,8 @@
   <xacro:add_camera name="camera_front_left" x="0.25" y="-0.25" z="0.25" roll="0" pitch="0" yaw="${-pi/4}"/>
   <xacro:add_camera name="camera_back_right" x="-0.25" y="0.25" z="0.25" roll="0" pitch="0" yaw="${3*pi/4}"/>
   <xacro:add_camera name="camera_back_left" x="-0.25" y="-0.25" z="0.25" roll="0" pitch="0" yaw="${-3*pi/4}"/>
+  <!-- top -->
+  <xacro:add_camera name="camera_top" x="0" y="0" z="5.25" roll="0" pitch="${pi/2}" yaw="0"/>
 
     
   <xacro:include filename="$(find rdsim_description)/urdf/rdsim.gazebo.xacro" />
