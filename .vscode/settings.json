@@ -1,0 +1,28 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/hdl_localization/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/dwb_msgs/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/nav_2d_msgs/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/nav2_simple_commander/lib/python3.10/site-packages",
+        "/home/ggh/ros2_ws/install/nav2_msgs/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/nav2_common/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/hdl_global_localization/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/hdl_localization/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/dwb_msgs/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/nav_2d_msgs/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/nav2_simple_commander/lib/python3.10/site-packages",
+        "/home/ggh/ros2_ws/install/nav2_msgs/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/nav2_common/local/lib/python3.10/dist-packages",
+        "/home/ggh/ros2_ws/install/hdl_global_localization/local/lib/python3.10/dist-packages"
+    ],
+    "files.associations": {
+        "cmath": "cpp",
+        "chrono": "cpp"
+    }
+}
