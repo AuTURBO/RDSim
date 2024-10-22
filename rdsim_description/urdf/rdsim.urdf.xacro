@@ -171,7 +171,7 @@
   <joint name="caster_joint" type="fixed">
     <parent link="base_link"/>
     <child link="caster_link"/>
-    <origin xyz="${-caster_xoff} 0.0 ${-(base_height)-0.005}" rpy="0 0 0"/>
+    <origin xyz="${-caster_xoff} 0.0 ${-(base_height)-0.015}" rpy="0 0 0"/>
   </joint>
 
   <link name="imu_link">

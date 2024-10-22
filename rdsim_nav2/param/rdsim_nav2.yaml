@@ -283,9 +283,7 @@ global_costmap:
           voxel_min_points: 0
           clear_after_reading: true
           max_z: 7.0
-          min_z: 0.05
-          vertical_fov_angle: 0.8745
-          horizontal_fov_angle: 1.048
+          min_z: 0.10
           decay_acceleration: 15.0
           model_type: 1
       static_layer:
@@ -319,7 +317,7 @@ local_costmap:
       stvl_layer:
         plugin: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"
         enabled: true
-        voxel_decay: 15.
+        voxel_decay: 5.
         decay_model: 0
         voxel_size: 0.05
         track_unknown_space: true
@@ -348,7 +346,7 @@ local_costmap:
           voxel_min_points: 0
           clear_after_reading: true
           max_z: 7.0
-          min_z: 0.05
+          min_z: 0.10
           vertical_fov_angle: 0.8745
           horizontal_fov_angle: 1.048
           decay_acceleration: 15.0
