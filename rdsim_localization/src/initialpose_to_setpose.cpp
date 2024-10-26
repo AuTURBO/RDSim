@@ -23,7 +23,7 @@ private:
     {
         auto request = std::make_shared<robot_localization::srv::SetPose::Request>();
         request->pose = *msg;
-        RCLCPP_INFO(this->get_logger(), "\n \n Position: [x: %f, y: %f, z: %f]",
+        RCLCPP_INFO(this->get_logger(), "Position: [x: %f, y: %f, z: %f]",
                 msg->pose.pose.position.x,
                 msg->pose.pose.position.y,
                 msg->pose.pose.position.z);
