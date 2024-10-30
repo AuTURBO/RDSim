@@ -115,12 +115,12 @@ def generate_launch_description():
         ),
 
         # InitialPose topic to SetPose srv
-        Node(
-            package='rdsim_localization',
-            executable='initialpose_to_setpose',
-            name='initialpose_to_setpose',
-            output='screen'
-        ),
+        #Node(
+        #    package='rdsim_localization',
+        #    executable='initialpose_to_setpose',
+        #    name='initialpose_to_setpose',
+        #    output='screen'
+        #),
 
 
     ])

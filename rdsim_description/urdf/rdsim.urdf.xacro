@@ -17,7 +17,7 @@
   <!-- Define some commonly used intertial properties  -->
   <xacro:macro name="box_inertia" params="m w h d">
     <inertial>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>      
+      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
       <mass value="${m}"/>
       <inertia ixx="${(m/12) * (h*h + d*d)}" ixy="0.0" ixz="0.0" iyy="${(m/12) * (w*w + d*d)}" iyz="0.0" izz="${(m/12) * (w*w + h*h)}"/>
     </inertial>
@@ -25,9 +25,9 @@
 
   <xacro:macro name="cylinder_inertia" params="m r h">
     <inertial>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0" />      
+      <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
       <mass value="${m}"/>
-      <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/> 
+      <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/>
     </inertial>
   </xacro:macro>
 
@@ -37,7 +37,7 @@
       <inertia ixx="${(2/5) * m * (r*r)}" ixy="0.0" ixz="0.0" iyy="${(2/5) * m * (r*r)}" iyz="0.0" izz="${(2/5) * m * (r*r)}"/>
     </inertial>
   </xacro:macro>
-  
+
    <!-- Robot Footprint -->
   <link name="base_footprint">
   	<xacro:box_inertia m="0" w="0" d="0" h="0"/>
@@ -68,7 +68,7 @@
 
     <xacro:box_inertia m="15" w="${base_width}" d="${base_length}" h="${base_height}"/>
   </link>
-  
+
 
 
 <!-- gps link -->
@@ -78,7 +78,7 @@
         <box size="0.001 0.001 0.001"/>
       </geometry>
     </visual>
-      
+
   </link>
   <!-- gps joint -->
   <joint name="gps_joint" type="fixed">
@@ -100,7 +100,7 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/> 
+      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
       <geometry>
         <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
       </geometry>
@@ -129,7 +129,7 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/> 
+      <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
       <geometry>
         <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
       </geometry>
@@ -180,22 +180,22 @@
         <box size="0.1 0.1 0.1"/>
       </geometry>
     </visual>
-    
+
     <collision>
       <geometry>
         <box size="0.1 0.1 0.1"/>
       </geometry>
     </collision>
-      
+
     <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1"/>
   </link>
-    
+
   <joint name="imu_joint" type="fixed">
     <parent link="base_link"/>
     <child link="imu_link"/>
     <origin xyz="0 0 0.01"/>
   </joint>
-    
+
 
 
  <link name="os_sensor">
@@ -219,7 +219,7 @@
       </geometry>
     </visual>
   </link>
-    
+
   <joint name="os_joint" type="fixed">
     <parent link="base_link"/>
     <child link="os_sensor"/>
@@ -248,14 +248,14 @@
       </geometry>
     </visual>
   </link>
-    
+
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="lidar_link"/>
     <origin xyz="0 0 0.44" rpy="0 0 0"/>
   </joint>
 
-  
+
   <link name="camera_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -277,7 +277,7 @@
       <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
     </inertial>
   </link>
-  
+
   <joint name="camera_joint" type="fixed">
     <parent link="base_link"/>
     <child link="camera_link"/>
@@ -293,6 +293,6 @@
   </joint>
 
   <!-- Include gazebo macro -->
-  
+
   <xacro:include filename="$(find rdsim_description)/urdf/rdsim.gazebo.xacro" />
 </robot>

@@ -86,6 +86,18 @@ ekf_filter_node_map:
     #odom1_pose_rejection_threshold: 10
     #odom1_pose_use_child_frame:false
 
+    odom2: odom2 #hdl_odom
+    odom2_config: [true,  true,  true,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false]
+    odom2_queue_size: 1
+    odom2_differential: true
+    odom2_relative: false
+    #odom2_pose_rejection_threshold: 10
+    #odom2_pose_use_child_frame: true
+
 
     imu0: imu
     imu0_config: [false, false, false,
