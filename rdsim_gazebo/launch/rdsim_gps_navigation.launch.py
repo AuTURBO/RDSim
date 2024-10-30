@@ -21,7 +21,7 @@ def generate_launch_description():
     nav_dir = get_package_share_directory('rdsim_nav2')
     description_dir = get_package_share_directory('rdsim_description')
 
-    use_rviz = LaunchConfiguration('use_rviz', default='false')
+    use_rviz = LaunchConfiguration('use_rviz', default='true')
     use_gazebo_gui = LaunchConfiguration('use_gazebo_gui', default='true')
     rviz_config_file = LaunchConfiguration('rviz_config_file', default=PathJoinSubstitution(
             [
