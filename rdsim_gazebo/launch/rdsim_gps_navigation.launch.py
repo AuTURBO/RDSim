@@ -21,7 +21,7 @@ def generate_launch_description():
     nav_dir = get_package_share_directory('rdsim_nav2')
     description_dir = get_package_share_directory('rdsim_description')
 
-    use_rviz = LaunchConfiguration('use_rviz', default='true')
+    use_rviz = LaunchConfiguration('use_rviz', default='false')
     use_gazebo_gui = LaunchConfiguration('use_gazebo_gui', default='true')
     rviz_config_file = LaunchConfiguration('rviz_config_file', default=PathJoinSubstitution(
             [
@@ -72,7 +72,7 @@ def generate_launch_description():
 
     ## Parameters (replace frame names in case of namespacing)
     rl_params_file = os.path.join(local_dir, "config", "dual_ekf_navsat_params.yaml")
-    rl_params_file = "/home/gh/ros2_ws/src/RDSim/rdsim_localization/config/dual_ekf_navsat_params.yaml" # temp since build time need to save
+    #rl_params_file = "/home/gh/ros2_ws/src/RDSim/rdsim_localization/config/dual_ekf_navsat_params.yaml" # temp since build time need to save
     #print ("########################################################  rl_params_file: ", rl_params_file)
     rdsim_gps_localization = GroupAction([
 
@@ -115,12 +115,12 @@ def generate_launch_description():
         ),
 
         # InitialPose topic to SetPose srv
-        Node(
-            package='rdsim_localization',
-            executable='initialpose_to_setpose',
-            name='initialpose_to_setpose',
-            output='screen'
-        ),
+        #Node(
+        #    package='rdsim_localization',
+        #    executable='initialpose_to_setpose',
+        #    name='initialpose_to_setpose',
+        #    output='screen'
+        #),
 
 
     ])
