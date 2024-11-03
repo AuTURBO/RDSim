@@ -21,7 +21,7 @@ def generate_launch_description():
     nav_dir = get_package_share_directory('rdsim_nav2')
     description_dir = get_package_share_directory('rdsim_description')
 
-    use_rviz = LaunchConfiguration('use_rviz', default='true')
+    use_rviz = LaunchConfiguration('use_rviz', default='false')
     use_gazebo_gui = LaunchConfiguration('use_gazebo_gui', default='true')
     rviz_config_file = LaunchConfiguration('rviz_config_file', default=PathJoinSubstitution(
             [
@@ -72,9 +72,18 @@ def generate_launch_description():
 
     ## Parameters (replace frame names in case of namespacing)
     rl_params_file = os.path.join(local_dir, "config", "dual_ekf_navsat_params.yaml")
-    print ("########################################################  rl_params_file: ", rl_params_file)
+    #rl_params_file = "/home/gh/ros2_ws/src/RDSim/rdsim_localization/config/dual_ekf_navsat_params.yaml" # temp since build time need to save
+    #print ("########################################################  rl_params_file: ", rl_params_file)
     rdsim_gps_localization = GroupAction([
 
+        Node(
+                package="robot_localization",
+                executable="ekf_node",
+                name="ekf_filter_node_odom",
+                output="screen",
+                parameters=[rl_params_file, {"use_sim_time": True}],
+                remappings=[("odometry/filtered", "odometry/local")],
+            ),
         Node(
             package='robot_localization',
             executable='ekf_node',
@@ -82,8 +91,11 @@ def generate_launch_description():
             output='screen',
             parameters=[rl_params_file, {"use_sim_time": True}], # odom
             remappings=[
-                ('odometry/filtered', 'odometry/global'),
-                #('odom0', '/wheel_odom')
+                ('odom0', 'odometry/local'), # input
+                ('odom1', 'odometry/gps'), # input
+                ('odom2', 'hdl_odom'), # input
+                ('imu', 'imu'), # input
+                ('odometry/filtered', 'odometry/global'), # output
                 ]
         ),
 
@@ -101,6 +113,14 @@ def generate_launch_description():
                         ('odometry/filtered', 'odometry/global'), # input
                         ]
         ),
+
+        # InitialPose topic to SetPose srv
+        #Node(
+        #    package='rdsim_localization',
+        #    executable='initialpose_to_setpose',
+        #    name='initialpose_to_setpose',
+        #    output='screen'
+        #),
 
 
     ])
