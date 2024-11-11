@@ -5,9 +5,7 @@
 ![nav2](./documents/nav2.png)
 
 ## Environment Settings
-There are two ways to execute: 
-- i) run it in local 
-- ii) run it in docker.
+There are two ways to execute: 'local' or 'docker' 
 
 
 **RDSim clone**
