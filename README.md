@@ -10,8 +10,10 @@ There are two ways to execute:
 - ii) run it in docker.
 
 
-* RDSim clone
+**RDSim clone**
+
 First of all, we need to clone this project before that.
+
 ```bash
 $ cd ~/ros2_ws/src 
 $ git clone --recursive https://github.com/AuTURBO/RDSim.git
@@ -20,18 +22,18 @@ $ cd ~/ros2_ws/src/RDSim/ && git submodule update --remote
 
 ### i) local: Install && build
 
-* Requirements
+**Requirements**
 - [ROS 2 humble](https://docs.ros.org/en/humble/index.html)
 - [gazebo 11](https://classic.gazebosim.org/tutorials?tut=install_ubuntu)
 
 
-* Setting GAZEBO_RESOURCE_PATH
+**Setting GAZEBO_RESOURCE_PATH**
 ```sh
 echo "export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11:$GAZEBO_RESOURCE_PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-* Install dependency
+**Install dependency**
 ```bash
 $ sudo apt-get update && sudo apt install -y \
     ros-humble-robot-localization \
@@ -59,7 +61,7 @@ $ sudo apt-get update && sudo apt install -y \
     && source ~/.bashrc
 ```
 
-* RDSim build
+**RDSim build**
 ```bash
 $ cd ~/ros2_ws && rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
 $ colcon build --symlink-install && source install/local_setup.bash
