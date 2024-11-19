@@ -1,5 +1,10 @@
 # RDSim: Robo Delivery Simulator
 
+### [Project Page](https://auturbo.github.io/RDSim) | [Video](https://www.youtube.com/watch?si=KmcLMo9WP7M93-m2&v=LW87tunwvLI&feature=youtu.be)
+
+<b>About:</b> 
+*RDSim is a Robo Delivery Simulator developed for autonomous delivery systems. It integrates state-of-the-art SLAM, localization, planning, and control technologies within the Gazebo simulation environment. Designed as a comprehensive solution, RDSim supports robot control, environment simulation, and robust navigation capabilities.* 
+
 ![small_sim_world](./documents/small_sim_world.png)
 ![glim_result](./documents/glim_result.png)
 ![nav2](./documents/nav2.png)
