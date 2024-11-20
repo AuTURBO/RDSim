@@ -1,28 +1,42 @@
 # RDSim: Robo Delivery Simulator
 
+### [Project Page](https://auturbo.github.io/RDSim) | [Video](https://www.youtube.com/watch?si=KmcLMo9WP7M93-m2&v=LW87tunwvLI&feature=youtu.be)
+
+<b>About:</b> 
+*RDSim is a Robo Delivery Simulator developed for autonomous delivery systems. It integrates state-of-the-art SLAM, localization, planning, and control technologies within the Gazebo simulation environment. Designed as a comprehensive solution, RDSim supports robot control, environment simulation, and robust navigation capabilities.* 
+
 ![small_sim_world](./documents/small_sim_world.png)
 ![glim_result](./documents/glim_result.png)
 ![nav2](./documents/nav2.png)
 
 ## Environment Settings
+There are two ways to execute: 'local' or 'docker' 
+
+
+**RDSim clone**
+
+First of all, we need to clone this project before that.
+
+```bash
+$ cd ~/ros2_ws/src 
+$ git clone --recursive https://github.com/AuTURBO/RDSim.git
+$ cd ~/ros2_ws/src/RDSim/ && git submodule update --remote
+```
+
 ### i) local: Install && build
 
-* Setting GAZEBO_RESOURCE_PATH
+**Requirements**
+- [ROS 2 humble](https://docs.ros.org/en/humble/index.html)
+- [gazebo 11](https://classic.gazebosim.org/tutorials?tut=install_ubuntu)
+
+
+**Setting GAZEBO_RESOURCE_PATH**
 ```sh
 echo "export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11:$GAZEBO_RESOURCE_PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-* RDSim build
-```bash
-$ cd ~/ros2_ws/src 
-$ git clone --recursive https://github.com/AuTURBO/RDSim.git
-$ cd ~/ros2_ws/src/RDSim/ && git submodule update --remote
-$ rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
-$ cd ~/ros2_ws && colcon build --symlink-install && source install/local_setup.bash
-```
-
-* Install dependency
+**Install dependency**
 ```bash
 $ sudo apt-get update && sudo apt install -y \
     ros-humble-robot-localization \
@@ -48,7 +62,12 @@ $ sudo apt-get update && sudo apt install -y \
     && echo 'alias start_rdsim="cd ~/ros2_ws/src/RDSim/rdsim_launcher && tmuxp load rdsim_launcher.yaml"' >> ~/.bashrc \
     && echo 'alias end="tmux kill-session && killgazebo"' >> ~/.bashrc \ 
     && source ~/.bashrc
+```
 
+**RDSim build**
+```bash
+$ cd ~/ros2_ws && rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
+$ colcon build --symlink-install && source install/local_setup.bash
 ```
 
 ### ii) docker

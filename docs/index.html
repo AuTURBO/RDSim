@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="RDSim">
+  <meta name="keywords" content="Simulator">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RDSim</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RDSim</h1>
+          <h1 class="title is-2 publication-title">Robo Delivery Simulator</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/ggh-png">Woosung Yoon</a>&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/dawan0111">Dae Wan Kim</a>&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/Geonhee-LEE">Geonhee Lee</a>&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/VisionAIGeek99">Minwoo Kim</a>&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://DrawingProcess.github.io">Seongjun Choi</a>&nbsp&nbsp
+            </span>
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>KyungHee University &nbsp&nbsp</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>+</sup>corresponding authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="is-size-4 publication-authors">
+              <span class="author-block"><b>KSC 2024</b></span>
+            </div>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/LW87tunwvLI?si=KmcLMo9WP7M93-m2"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/AuTURBO/RDSim"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/images/sensor_display_rviz.png" alt="sensor_display_rviz" width="100%">
+        <br>
+        <h2 class="title is-3">About</h2>
+        <div class="content has-text-justified">
+          <p>
+            RDSim is a Robo Delivery Simulator developed for autonomous delivery systems. 
+            It integrates state-of-the-art SLAM, localization, planning, and control technologies within the Gazebo simulation environment. 
+            Designed as a comprehensive solution, RDSim supports robot control, environment simulation, and robust navigation capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/LW87tunwvLI?si=KmcLMo9WP7M93-m2"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3 is-centered" style="text-align: center;">Updated Feature</h2>
+        <div class="content">
+          <div class="row justify-content-center" id="news">
+            <div class="col-12">
+              <!-- <p class="section-name" style="margin-bottom: 3pt; "><b>News</b></p> -->
+              <div class="exp-list">
+                <ul>
+                  <li>&nbsp <b>(2024.11.)</b> Ongoing enhancements
+                    <ul>
+                      <li>ROS2 control</li>
+                      <li>Segmentation of drivable areas</li>
+                      <li>Advanced behavior tree (BT) applications</li>
+                    </ul>
+                  </li>
+                  <li>&nbsp <b>(2024.10.)</b> Advanced planning and control with MPPI controller tuning, topology map navigation, and GPS+IMU fusion.
+                    <ul>
+                      <li>MPPI controller parameter turning</li>
+                      <li>Nav2 Topology map navigation</li>
+                      <li>Relocalizer: GPS + IMU + HDL localization</li>
+                      <li>Topology Map Editor</li>
+                    </ul>
+                  </li>
+                  <li>&nbsp <b>(2024.09.)</b> Integration of 3D LiDAR SLAM using GLIM, Nav2 configuration, and robust localization through HDL techniques.
+                    <ul>
+                      <li>3D LiDAR SLAM (<a href="https://github.com/koide3/glim">GLIM</a>)</li>
+                      <li>Nav2 Package Configuation</li>
+                      <li>GLIM factor graph convert to pcd file</li>
+                      <li>Localization (<a href="https://github.com/koide3/hdl_localization">HDL localization</a>) & Integrate with Nav2</li>
+                    </ul>
+                  </li>
+                  <li>&nbsp <b>(2024.04.)</b> Initial development of RDSim with Gazebo simulator and Docker container support.
+                    <ul>
+                      <li>Initialize RDSim based on <a href="https://github.com/osrf/citysim">CitySim</a></li>
+                      <li>Basic Robot control</li>
+                      <li>Setting Docker container</li>
+                      <li>Gazebo <a href="https://www.youtube.com/watch?v=We5o-Tw6ByA&pp=ygUFcmRzaW0%3D">dynamic actor</a> based on <a href="https://github.com/robotics-upo/gazebo_sfm_plugin">gazebo_sfm_plugin</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">SLAM integration using GLIM and HDL localization</h2>
+        <!-- <p>
+          <b>SLAM and Localization:</b> 
+          A detailed view of 3D LiDAR SLAM and factor graph conversion to PCD files.
+          Use of Open3D for point cloud visualization.
+        </p> -->
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/ZHhsIfWeoyU?si=471Bfbetc_uCx89V"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <br>
+        <h2 class="title is-3">Demonstration of topology navigation with Nav2 and MPPI control</h2>
+        <!-- <p>
+          <b>Demonstration of topology navigation with Nav2 and MPPI control</b> 
+          Topology map navigation, including MPPI controller adjustments for enhanced trajectory planning.
+        </p> -->
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/xLx2PAmULNQ?si=WgUqUQl_z2d5qEuD"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <br>
+        <h2 class="title is-3">Visualization of the robot's navigation using robust localization techniques</h2>
+        <!-- <p>
+          <b>Visualization of the robot's navigation using robust localization techniques</b> 
+          A detailed view of 3D LiDAR SLAM and factor graph conversion to PCD files.
+          Use of Open3D for point cloud visualization.
+        </p> -->
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/lxEWh2Fm4H4?si=MYT8Ng2nI_HzzBrn"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <br>
+      </div>
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yoon2024rdsim,
+  author    = {Yoon, Woosung and Kim, Daewan and Liu, Lingjie and Lee, Geonhee and Kim, Minwoo and Choi, Seongjun},
+  title     = {RDSim: Robo Delivery Simulator},
+  year      = {2024},
+  url       = {https://github.com/AuTURBO/RDSim},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2403.17537.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://drawingprocess.github.io" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            The website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
