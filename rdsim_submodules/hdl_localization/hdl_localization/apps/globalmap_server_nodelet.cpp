@@ -57,7 +57,7 @@ private:
 
     // downsample globalmap
     double downsample_resolution = declare_parameter<double>("downsample_resolution", 0.1);
-    boost::shared_ptr<pcl::VoxelGrid<PointT>> voxelgrid(new pcl::VoxelGrid<PointT>());
+    std::shared_ptr<pcl::VoxelGrid<PointT>> voxelgrid(new pcl::VoxelGrid<PointT>());
     voxelgrid->setLeafSize(downsample_resolution, downsample_resolution, downsample_resolution);
     voxelgrid->setInputCloud(globalmap);
 
@@ -109,7 +109,7 @@ private:
 
     // downsample globalmap
     double downsample_resolution = declare_parameter<double>("downsample_resolution", 0.1);
-    boost::shared_ptr<pcl::VoxelGrid<PointT>> voxelgrid(new pcl::VoxelGrid<PointT>());
+    std::shared_ptr<pcl::VoxelGrid<PointT>> voxelgrid(new pcl::VoxelGrid<PointT>());
     voxelgrid->setLeafSize(downsample_resolution, downsample_resolution, downsample_resolution);
     voxelgrid->setInputCloud(globalmap);
 
