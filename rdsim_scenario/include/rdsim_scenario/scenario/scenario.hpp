@@ -76,13 +76,14 @@ public:
 
     // get the default behavior tree for this Scenario
     std::string default_bt_xml_filename = getDefaultBTFilepath(parent_node);
+    int16_t debug_port = 6666;
 
     // Create the Behavior Tree Action Server for this Scenario
     bt_action_server_ = std::make_unique<nav2_behavior_tree::BtActionServer<ActionT>>(
         node, getName(), plugin_lib_names, default_bt_xml_filename,
         std::bind(&Scenario::onGoalReceived, this, std::placeholders::_1), std::bind(&Scenario::onLoop, this),
         std::bind(&Scenario::onPreempt, this, std::placeholders::_1),
-        std::bind(&Scenario::onCompletion, this, std::placeholders::_1, std::placeholders::_2));
+        std::bind(&Scenario::onCompletion, this, std::placeholders::_1, std::placeholders::_2), debug_port);
 
     bool ok = true;
     if (!bt_action_server_->on_configure()) {
