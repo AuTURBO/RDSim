@@ -1,0 +1,7 @@
+geometry_msgs/PoseStamped start_pose
+geometry_msgs/PoseStamped end_pose
+string behavior_tree
+---
+int32 feedback
+---
+bool result
