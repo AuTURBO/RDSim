@@ -2,3 +2,7 @@
 	path = rdsim_submodules/navigation2
 	url = https://github.com/AuTURBO/RDSim_navigation2.git
 	branch = rdsim/humble
+[submodule "rdsim_submodules/BehaviorTree.CPP"]
+	path = rdsim_submodules/BehaviorTree.CPP
+	url = https://github.com/BehaviorTree/BehaviorTree.CPP.git
+	branch = v3_groot2_publisher
