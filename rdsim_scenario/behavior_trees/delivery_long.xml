@@ -3,15 +3,15 @@
       main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
     <Sequence>
+      <SetBlackboard value="000"
+                     output_key="error_code"/>
       <NavigateToPose goal="{start_goal}"
                       behavior_tree=""/>
       <Fallback>
-        <ReactiveFallback>
-          <IsProductPlaced topic_name="product_placed"/>
-          <Timeout msec="30000">
-            <Wait wait_duration="30"/>
-          </Timeout>
-        </ReactiveFallback>
+        <SubTree ID="PutProductTree"
+                 __shared_blackboard="true"/>
+        <SetBlackboard value="001"
+                       output_key="error_code"/>
         <ForceFailure>
           <NavigateToPose goal="{initial_goal}"
                           behavior_tree=""/>
@@ -19,18 +19,27 @@
       </Fallback>
       <NavigateToPose goal="{end_goal}"
                       behavior_tree=""/>
+      <RecoveryNode number_of_retries="5">
+        <Sequence>
+          <AlwaysSuccess/>
+        </Sequence>
+        <Sequence>
+          <SetBlackboard value="002"
+                         output_key="error_code"/>
+          <ForceFailure>
+            <SubTree ID="ReturnProductTree"
+                     __shared_blackboard="true"/>
+          </ForceFailure>
+        </Sequence>
+      </RecoveryNode>
       <Fallback>
-        <ReactiveFallback>
-          <Inverter>
-            <IsProductPlaced topic_name="product_placed"/>
-          </Inverter>
-          <Timeout msec="30000">
-            <Wait wait_duration="30"/>
-          </Timeout>
-        </ReactiveFallback>
+        <SubTree ID="TakeoutProductTree"
+                 __shared_blackboard="true"/>
+        <SetBlackboard value="003"
+                       output_key="error_code"/>
         <ForceFailure>
-          <NavigateToPose goal="{start_goal}"
-                          behavior_tree=""/>
+          <SubTree ID="ReturnProductTree"
+                   __shared_blackboard="true"/>
         </ForceFailure>
       </Fallback>
       <NavigateToPose goal="{initial_goal}"
@@ -78,6 +87,9 @@
       <input_port name="goal">Goal</input_port>
       <input_port name="behavior_tree">Behavior tree to run</input_port>
     </Action>
+    <Control ID="RecoveryNode">
+      <input_port name="number_of_retries">Number of retries</input_port>
+    </Control>
     <Action ID="Wait">
       <input_port name="wait_duration">Wait time</input_port>
     </Action>
