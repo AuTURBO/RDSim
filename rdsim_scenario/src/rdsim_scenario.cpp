@@ -9,7 +9,8 @@ nav2_util::CallbackReturn ScenarioManager::on_configure(const rclcpp_lifecycle::
   std::vector<std::string> plugin_lib_names = {
       "nav2_recovery_node_bt_node",           "nav2_pipeline_sequence_bt_node",
       "nav2_round_robin_node_bt_node",        "nav2_navigate_through_poses_action_bt_node",
-      "nav2_navigate_to_pose_action_bt_node", "nav2_is_battery_charging_condition_bt_node"};
+      "nav2_navigate_to_pose_action_bt_node", "nav2_is_battery_charging_condition_bt_node",
+      "is_product_placed_condition_bt_node",  "nav2_wait_action_bt_node"};
   if (!m_delivery_scenario->on_configure(shared_from_this(), plugin_lib_names, &m_muxer)) {
     return nav2_util::CallbackReturn::FAILURE;
   }

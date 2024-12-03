@@ -31,12 +31,28 @@ set(dependencies
   nav2_behavior_tree
 )
 
+add_library(is_product_placed_condition_bt_node SHARED plugins/is_product_placed_condition.cpp)
+list(APPEND plugin_libs is_product_placed_condition_bt_node)
+
+foreach(bt_plugin ${plugin_libs})
+  ament_target_dependencies(${bt_plugin} ${dependencies})
+  target_compile_definitions(${bt_plugin} PRIVATE BT_PLUGIN_EXPORT)
+endforeach()
+
 add_library(${library_name}
   src/rdsim_scenario.cpp
   src/scenario/delivery_scenario.cpp
 )
+
 ament_target_dependencies(${library_name}
   ${dependencies}
+)
+
+install(TARGETS ${library_name}
+                ${plugin_libs}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 add_executable(${library_name}_node
