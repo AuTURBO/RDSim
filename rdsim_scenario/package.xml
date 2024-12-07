@@ -5,11 +5,12 @@
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="msd030428@gmail.com">kdw</maintainer>
-  <license>Apache-2.0</license>
+  <license>Apache-2.0</license> 
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>rdsim_interfaces</depend>
-
+  <depend>nav2_behavior_tree</depend>
+  <depend>behaviortree_cpp_v3</depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
   <test_depend>ament_cmake_gtest</test_depend>
