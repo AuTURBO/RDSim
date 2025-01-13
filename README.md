@@ -12,7 +12,7 @@
 </div>
 
 ## 1. Environment Settings
-There are two ways to execute: 'local' or 'docker'
+There are two ways to execute: 'Manual Installation && build' or 'Docker Installation'
 
 
 **RDSim clone**
