@@ -5,9 +5,11 @@
 <b>About:</b>
 *RDSim is a Robo Delivery Simulator developed for autonomous delivery systems. It integrates state-of-the-art SLAM, localization, planning, and control technologies within the Gazebo simulation environment. Designed as a comprehensive solution, RDSim supports robot control, environment simulation, and robust navigation capabilities.*
 
-![small_sim_world](./documents/small_sim_world.png)
-![glim_result](./documents/glim_result.png)
-![nav2](./documents/nav2.png)
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/small_sim_world.png" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="./documents/glim_result.png" alt="Image 2" width="200" style="margin-left: 10px;">
+  <img src="./documents/nav2.png" alt="Image 3" width="200" style="margin-left: 10px;">
+</div>
 
 ## Environment Settings
 There are two ways to execute: 'local' or 'docker'
@@ -80,14 +82,14 @@ $ colcon build --symlink-install && source install/local_setup.bash
 cd ~/ros2_ws/src/RDSim/docker && ./run_command.sh
 ```
 
-## Execute RDSim
+## Execute the RDSim
 ### All launch
 
 ```bash
 start_rdsim
 ```
 
-### All Down
+### All Kill
 ```bash
 end
 ```
