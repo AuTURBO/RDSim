@@ -90,13 +90,13 @@ controller_server:
 
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
-      time_steps: 30
+      time_steps: 60
       model_dt: 0.1
       batch_size: 2000
       vx_std: 0.2
       vy_std: 0.2
       wz_std: 0.4
-      vx_max: 1.5
+      vx_max: 1.8
       vx_min: -0.35
       vy_max: 0.5
       wz_max: 1.9
@@ -105,7 +105,7 @@ controller_server:
       ay_max: 3.0
       az_max: 3.5
       iteration_count: 1
-      prune_distance: 1.7
+      prune_distance: 5.7
       transform_tolerance: 0.1
       temperature: 0.3
       gamma: 0.015
@@ -135,7 +135,7 @@ controller_server:
         threshold_to_consider: 0.5
       PreferForwardCritic:
         enabled: true
-        cost_power: 1
+        cost_power: 2
         cost_weight: 5.0
         threshold_to_consider: 0.5
       # ObstaclesCritic:
@@ -261,9 +261,9 @@ local_costmap:
       robot_base_frame: base_footprint
       use_sim_time: True
       rolling_window: true
-      width: 5
-      height: 5
-      resolution: 0.05
+      width: 10
+      height: 10
+      resolution: 0.1
       robot_radius: 0.22
       plugins: ["stvl_layer", "inflation_layer"]
       stvl_layer:
@@ -341,7 +341,7 @@ map_saver:
 
 planner_server:
   ros__parameters:
-    expected_planner_frequency: 1.0
+    expected_planner_frequency: 0.10
     use_sim_time: True
     planner_plugins: ["GridBased"]
     GridBased:
