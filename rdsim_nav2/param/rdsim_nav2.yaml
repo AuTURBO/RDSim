@@ -105,7 +105,7 @@ controller_server:
       ay_max: 3.0
       az_max: 3.5
       iteration_count: 1
-      prune_distance: 5.7
+      prune_distance: 6.0
       transform_tolerance: 0.1
       temperature: 0.3
       gamma: 0.015
