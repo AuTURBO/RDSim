@@ -103,7 +103,7 @@ This command ensures that all processes related to the simulation are safely sto
 
 
 
-## 3. ROS2 CLI
+## 3. Launch the ROS2 Nodes and GAZEBO world
 
 ### Launch the Gazebo world
 
