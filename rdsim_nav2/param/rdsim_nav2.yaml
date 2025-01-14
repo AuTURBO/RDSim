@@ -1,51 +1,3 @@
-amcl:
-  ros__parameters:
-    use_sim_time: True
-    alpha1: 0.2
-    alpha2: 0.2
-    alpha3: 0.2
-    alpha4: 0.2
-    alpha5: 0.2
-    base_frame_id: "base_footprint"
-    beam_skip_distance: 0.5
-    beam_skip_error_threshold: 0.9
-    beam_skip_threshold: 0.3
-    do_beamskip: false
-    global_frame_id: "map"
-    lambda_short: 0.1
-    laser_likelihood_max_dist: 2.0
-    laser_max_range: 100.0
-    laser_min_range: -1.0
-    laser_model_type: "likelihood_field"
-    max_beams: 60
-    max_particles: 2000
-    min_particles: 500
-    odom_frame_id: "amcl_odom"
-    pf_err: 0.05
-    pf_z: 0.99
-    recovery_alpha_fast: 0.0
-    recovery_alpha_slow: 0.0
-    resample_interval: 1
-    robot_model_type: "nav2_amcl::DifferentialMotionModel"
-    save_pose_rate: 0.5
-    sigma_hit: 0.2
-    tf_broadcast: false
-    transform_tolerance: 10.0
-    update_min_a: 0.2
-    update_min_d: 0.25
-    z_hit: 0.5
-    z_max: 0.05
-    z_rand: 0.5
-    z_short: 0.05
-    scan_topic: scan
-    set_initial_pose: true
-    always_reset_initial_pose: true
-    initial_pose:
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      yaw: 0.0
-
 
 bt_navigator:
   ros__parameters:
@@ -138,13 +90,13 @@ controller_server:
 
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
-      time_steps: 30
+      time_steps: 60
       model_dt: 0.1
       batch_size: 2000
       vx_std: 0.2
       vy_std: 0.2
       wz_std: 0.4
-      vx_max: 1.5
+      vx_max: 1.8
       vx_min: -0.35
       vy_max: 0.5
       wz_max: 1.9
@@ -153,7 +105,7 @@ controller_server:
       ay_max: 3.0
       az_max: 3.5
       iteration_count: 1
-      prune_distance: 1.7
+      prune_distance: 6.0
       transform_tolerance: 0.1
       temperature: 0.3
       gamma: 0.015
@@ -183,7 +135,7 @@ controller_server:
         threshold_to_consider: 0.5
       PreferForwardCritic:
         enabled: true
-        cost_power: 1
+        cost_power: 2
         cost_weight: 5.0
         threshold_to_consider: 0.5
       # ObstaclesCritic:
@@ -242,13 +194,13 @@ global_costmap:
   global_costmap:
     ros__parameters:
       footprint_padding: 0.03
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      update_frequency: 0.20
+      publish_frequency: 0.20
       global_frame: map
       robot_base_frame: base_footprint
       use_sim_time: True
       robot_radius: 0.22 # radius set and used, so no footprint points
-      resolution: 0.05
+      resolution: 0.1
       # plugins: ["static_layer", "obstacle_layer", "stvl_layer", "inflation_layer"]
       plugins: ["static_layer", "stvl_layer", "inflation_layer"]
       stvl_layer:
@@ -273,7 +225,7 @@ global_costmap:
           topic: /ouster/points
           marking: true
           clearing: true
-          obstacle_range: 10.0
+          obstacle_range: 5.0
           min_obstacle_height: 0.10
           max_obstacle_height: 4.0
           expected_update_rate: 0.0
@@ -282,7 +234,7 @@ global_costmap:
           filter: "voxel"
           voxel_min_points: 0
           clear_after_reading: true
-          max_z: 7.0
+          max_z: 2.0
           min_z: 0.10
           decay_acceleration: 15.0
           model_type: 1
@@ -295,7 +247,7 @@ global_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         enabled: true
-        inflation_radius: 0.55
+        inflation_radius: 2.0
         cost_scaling_factor: 1.0
         inflate_unknown: false
         inflate_around_unknown: true
@@ -303,7 +255,7 @@ global_costmap:
 local_costmap:
   local_costmap:
     ros__parameters:
-      update_frequency: 5.0
+      update_frequency: 10.0
       publish_frequency: 2.0
       global_frame: map
       robot_base_frame: base_footprint
@@ -311,7 +263,7 @@ local_costmap:
       rolling_window: true
       width: 10
       height: 10
-      resolution: 0.05
+      resolution: 0.1
       robot_radius: 0.22
       plugins: ["stvl_layer", "inflation_layer"]
       stvl_layer:
@@ -336,9 +288,9 @@ local_costmap:
           topic: /ouster/points
           marking: true
           clearing: true
-          obstacle_range: 10.0
+          obstacle_range: 5.0
           min_obstacle_height: 0.10
-          max_obstacle_height: 4.0
+          max_obstacle_height: 2.0
           expected_update_rate: 0.0
           observation_persistence: 1.0
           inf_is_valid: false
@@ -353,8 +305,8 @@ local_costmap:
           model_type: 1
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        inflation_radius: 1.0
-        cost_scaling_factor: 3.0
+        inflation_radius: 2.0
+        cost_scaling_factor: 1.0
 
       always_send_full_costmap: True
   local_costmap_client:
@@ -389,7 +341,7 @@ map_saver:
 
 planner_server:
   ros__parameters:
-    expected_planner_frequency: 1.0
+    expected_planner_frequency: 0.10
     use_sim_time: True
     planner_plugins: ["GridBased"]
     GridBased:

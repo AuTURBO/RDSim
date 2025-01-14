@@ -2,15 +2,17 @@
 
 ### [Project Page](https://auturbo.github.io/RDSim) | [Video](https://www.youtube.com/watch?si=KmcLMo9WP7M93-m2&v=LW87tunwvLI&feature=youtu.be)
 
-<b>About:</b> 
-*RDSim is a Robo Delivery Simulator developed for autonomous delivery systems. It integrates state-of-the-art SLAM, localization, planning, and control technologies within the Gazebo simulation environment. Designed as a comprehensive solution, RDSim supports robot control, environment simulation, and robust navigation capabilities.* 
+<b>Summary:</b>
+*RDSim is a Robo Delivery Simulator developed for autonomous delivery systems. It integrates state-of-the-art SLAM, localization, planning, and control technologies within the Gazebo simulation environment. Designed as a comprehensive solution, RDSim supports robot control, environment simulation, and robust navigation capabilities.*
 
-![small_sim_world](./documents/small_sim_world.png)
-![glim_result](./documents/glim_result.png)
-![nav2](./documents/nav2.png)
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/small_sim_world.png" alt="Image 1" width="200" style="margin-right: 1px;">
+  <img src="./documents/glim_result.png" alt="Image 2" width="200" style="margin-left: 1px;">
+  <img src="./documents/nav2.png" alt="Image 3" width="200" style="margin-left: 1px;">
+</div>
 
-## Environment Settings
-There are two ways to execute: 'local' or 'docker' 
+## 1. Environment Settings
+There are two ways to execute: 'Manual Installation && build' or 'Docker Installation'
 
 
 **RDSim clone**
@@ -18,12 +20,12 @@ There are two ways to execute: 'local' or 'docker'
 First of all, we need to clone this project before that.
 
 ```bash
-$ cd ~/ros2_ws/src 
+$ cd ~/ros2_ws/src
 $ git clone --recursive https://github.com/AuTURBO/RDSim.git
 $ cd ~/ros2_ws/src/RDSim/ && git submodule update --remote
 ```
 
-### i) local: Install && build
+### 1.1. Manual Installation && build
 
 **Requirements**
 - [ROS 2 humble](https://docs.ros.org/en/humble/index.html)
@@ -60,7 +62,7 @@ $ sudo apt-get update && sudo apt install -y \
     tmux \
     tmuxp \
     && echo 'alias start_rdsim="cd ~/ros2_ws/src/RDSim/rdsim_launcher && tmuxp load rdsim_launcher.yaml"' >> ~/.bashrc \
-    && echo 'alias end="tmux kill-session && killgazebo"' >> ~/.bashrc \ 
+    && echo 'alias end="tmux kill-session && killgazebo"' >> ~/.bashrc \
     && source ~/.bashrc
 ```
 
@@ -70,68 +72,94 @@ $ cd ~/ros2_ws && rosdep install --ignore-src --rosdistro humble --from-paths ./
 $ colcon build --symlink-install && source install/local_setup.bash
 ```
 
-### ii) docker
+### 1.2. Docker Installation
 
 > Docker environment tested on Ubuntu 22.04, nvidia
-> 
+>
 
 ```bash
 # in rdsim main directory
-cd ~/ros2_ws/src/RDSim/docker && ./run_command.sh 
+cd ~/ros2_ws/src/RDSim/docker && ./run_command.sh
 ```
 
-## Execute RDSim
-### All launch 
+## 2. Executing the RDSim with One Line
+### Launch All Nodes
+To start the simulation and launch all necessary nodes, simply execute the following command:
 
 ```bash
 start_rdsim
 ```
+This command initializes the RDSim environment and starts all relevant processes automatically.
 
-### All Down
+### Terminate All Nodes
+
+To terminate all running nodes and clean up resources, use the following
+
 ```bash
 end
 ```
 
+This command ensures that all processes related to the simulation are safely stopped.
 
 
-### Gazebo world launch
 
-> Gazebo 맵만 실행시킬 경우
-> 
+## 3. Launch the ROS2 Nodes and GAZEBO world
 
-```bash
-ros2 launch rdsim_gazebo rdsim_gazebo_world.launch.py  
-```
-
-### Robot Display launch 
-
-> Gazebo 없이 로봇의 tf를 확인하고 싶을 경우
-> 
+### Launch the Gazebo world
 
 ```bash
-ros2 launch rdsim_description rdsim_description.launch.py 
+ros2 launch rdsim_gazebo rdsim_gazebo_world.launch.py
 ```
 
+![alt text](documents/gazebo_world.png)
 
 ---
 
-### Sim launch
+### Loading the robot model into the GAZEBO world
 
 ```bash
-ros2 launch rdsim_description rdsim_gazebo.launch.py 
+ros2 launch rdsim_description rdsim_gazebo.launch.py
 ```
 
-### teleop cmd 
+![alt text](documents/robot_model.png)
 
-> cmd_vel을 통해 제어하기 때문에 다음 명령어를 통해 제어할 수 있습니다.
-> 
+### Teleoperate the robot
+
+Executing the teleoperation node to control the robot via keyboard input
 
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
-### Execute everything with a single lunch file
+### Navigate the outdoor robot in the GAZEBO world
+
+
+The system supports launching localization nodes (VSLAM, EKF) and the navigation node (NAV2) for outdoor environments.
+
 
 ```bash
-ros2 launch rdsim_gazebo rdsim_navigation.launch.py
+ros2 launch rdsim_gazebo rdsim_gps_navigation.launch.py
 ```
+
+![alt text](documents/navigation.png)
+
+Navigation can detect 3D obstacles, such as trees, using a 3D LiDAR sensor and a spatio-temporal voxel layer for precise obstacle avoidance.
+
+![alt text](documents/3d_obstacles_detection.png)
+
+This navigation module includes a new topology map server that supports predefined routing plans for efficient delivery in the GAZEBO simulation environment. The topology map server is implemented as a behavior, enabling the use of behavior trees for flexible and adaptive decision-making. Additionally, the behavior tree can be visualized using Groot for better understanding and debugging.
+
+<div style="display: flex; justify-content: center;">
+  <img src="documents/topology_route.png" alt="Image 1" width="300" style="margin-right: 10px;">
+  <img src="documents/behavior_tree.png" alt="Image 2" width="300" style="margin-left: 10px;">
+</div>
+
+
+> The localization framework is based on pose estimation using the `robot_localization` package. It integrates data from various sensors, including:
+    > - VSLAM (HDL Localization) module
+    > - GPS sensor
+    > - Wheel odometry
+    > - IMU sensor
+
+![alt text](documents/robot_localization.png)
+_* The box represented in orange is used_
