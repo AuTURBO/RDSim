@@ -194,13 +194,13 @@ global_costmap:
   global_costmap:
     ros__parameters:
       footprint_padding: 0.03
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      update_frequency: 0.20
+      publish_frequency: 0.20
       global_frame: map
       robot_base_frame: base_footprint
       use_sim_time: True
       robot_radius: 0.22 # radius set and used, so no footprint points
-      resolution: 0.05
+      resolution: 0.1
       # plugins: ["static_layer", "obstacle_layer", "stvl_layer", "inflation_layer"]
       plugins: ["static_layer", "stvl_layer", "inflation_layer"]
       stvl_layer:
@@ -225,7 +225,7 @@ global_costmap:
           topic: /ouster/points
           marking: true
           clearing: true
-          obstacle_range: 10.0
+          obstacle_range: 5.0
           min_obstacle_height: 0.10
           max_obstacle_height: 4.0
           expected_update_rate: 0.0
@@ -234,7 +234,7 @@ global_costmap:
           filter: "voxel"
           voxel_min_points: 0
           clear_after_reading: true
-          max_z: 7.0
+          max_z: 2.0
           min_z: 0.10
           decay_acceleration: 15.0
           model_type: 1
@@ -247,7 +247,7 @@ global_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         enabled: true
-        inflation_radius: 0.55
+        inflation_radius: 2.0
         cost_scaling_factor: 1.0
         inflate_unknown: false
         inflate_around_unknown: true
@@ -255,14 +255,14 @@ global_costmap:
 local_costmap:
   local_costmap:
     ros__parameters:
-      update_frequency: 5.0
+      update_frequency: 10.0
       publish_frequency: 2.0
       global_frame: map
       robot_base_frame: base_footprint
       use_sim_time: True
       rolling_window: true
-      width: 10
-      height: 10
+      width: 5
+      height: 5
       resolution: 0.05
       robot_radius: 0.22
       plugins: ["stvl_layer", "inflation_layer"]
@@ -288,9 +288,9 @@ local_costmap:
           topic: /ouster/points
           marking: true
           clearing: true
-          obstacle_range: 10.0
+          obstacle_range: 5.0
           min_obstacle_height: 0.10
-          max_obstacle_height: 4.0
+          max_obstacle_height: 2.0
           expected_update_rate: 0.0
           observation_persistence: 1.0
           inf_is_valid: false
@@ -305,8 +305,8 @@ local_costmap:
           model_type: 1
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        inflation_radius: 1.0
-        cost_scaling_factor: 3.0
+        inflation_radius: 2.0
+        cost_scaling_factor: 1.0
 
       always_send_full_costmap: True
   local_costmap_client:
