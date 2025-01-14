@@ -143,6 +143,7 @@ ros2 launch rdsim_gazebo rdsim_gps_navigation.launch.py
 
 ![alt text](documents/navigation.png)
 
+
 Navigation can detect 3D obstacles, such as trees, using a 3D LiDAR sensor and a spatio-temporal voxel layer for precise obstacle avoidance.
 
 ![alt text](documents/3d_obstacles_detection.png)
@@ -156,10 +157,10 @@ This navigation module includes a new topology map server that supports predefin
 
 
 > The localization framework is based on pose estimation using the `robot_localization` package. It integrates data from various sensors, including:
-    > - VSLAM (HDL Localization) module
-    > - GPS sensor
-    > - Wheel odometry
-    > - IMU sensor
+> - VSLAM (HDL Localization) module
+> - GPS sensor
+> - Wheel odometry
+> - IMU sensor
 
 ![alt text](documents/robot_localization.png)
 _* The box represented in orange is used_
