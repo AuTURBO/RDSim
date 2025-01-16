@@ -5,15 +5,30 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+set(BT_PATH "${CMAKE_CURRENT_BINARY_DIR}/../../install/behaviortree_cpp_v3")
+set(BT_TREE_PATH "${CMAKE_CURRENT_BINARY_DIR}/../../install/nav2_behavior_tree")
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(nav2_common REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(nav2_util REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(nav2_behavior_tree REQUIRED)
+find_package(nav2_behavior_tree REQUIRED PATHS ${BT_TREE_PATH})
 find_package(rdsim_interfaces REQUIRED)
-find_package(behaviortree_cpp_v3 3.8.4 REQUIRED)
+find_package(behaviortree_cpp_v3 3.8.4 REQUIRED PATHS ${BT_PATH})
+
+message(STATUS "Current source directory: ${CMAKE_CURRENT_SOURCE_DIR}")
+
+if(behaviortree_cpp_v3_FOUND)
+    if(behaviortree_cpp_v3_VERSION)
+        message(WARNING "Found behaviortree_cpp_v3 version: ${behaviortree_cpp_v3_VERSION}")
+    else()
+        message(WARNING "behaviortree_cpp_v3 found but version information is not available.")
+    endif()
+else()
+    message(FATAL_ERROR "behaviortree_cpp_v3 not found!")
+endif()
 
 nav2_package()
 
