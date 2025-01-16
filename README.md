@@ -69,7 +69,7 @@ $ sudo apt-get update && sudo apt install -y \
 **RDSim build**
 ```bash
 $ cd ~/ros2_ws && rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2
-$ colcon build --symlink-install && source install/local_setup.bash
+$ cd ~/ros2_ws && colcon build --symlink-install --parallel-workers 8 && source install/local_setup.bash
 ```
 
 ### 1.2. Docker Installation
