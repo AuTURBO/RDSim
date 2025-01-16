@@ -111,7 +111,11 @@ This command ensures that all processes related to the simulation are safely sto
 ros2 launch rdsim_gazebo rdsim_gazebo_world.launch.py
 ```
 
-![alt text](documents/gazebo_world.png)
+
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/gazebo_world.png" alt="Image 1" width="480" style="margin-right: 1px;">
+</div>
+
 
 ---
 
@@ -121,7 +125,9 @@ ros2 launch rdsim_gazebo rdsim_gazebo_world.launch.py
 ros2 launch rdsim_description rdsim_gazebo.launch.py
 ```
 
-![alt text](documents/robot_model.png)
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/robot_model.png" alt="Image 1" width="480" style="margin-right: 1px;">
+</div>
 
 ### Teleoperate the robot
 
@@ -141,11 +147,16 @@ The system supports launching localization nodes (VSLAM, EKF) and the navigation
 ros2 launch rdsim_gazebo rdsim_gps_navigation.launch.py
 ```
 
-![alt text](documents/navigation.png)
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/navigation.png" alt="Image 1" width="480" style="margin-right: 1px;">
+</div>
 
-Navigation can detect 3D obstacles, such as trees, using a 3D LiDAR sensor and a spatio-temporal voxel layer for precise obstacle avoidance.
 
-![alt text](documents/3d_obstacles_detection.png)
+This Navigation can detect 3D obstacles, such as trees, using a 3D LiDAR sensor and a spatio-temporal voxel layer for precise obstacle avoidance.
+
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/3d_obstacles_detection.png" alt="Image 1" width="480" style="margin-right: 1px;">
+</div>
 
 This navigation module includes a new topology map server that supports predefined routing plans for efficient delivery in the GAZEBO simulation environment. The topology map server is implemented as a behavior, enabling the use of behavior trees for flexible and adaptive decision-making. Additionally, the behavior tree can be visualized using Groot for better understanding and debugging.
 
@@ -156,10 +167,13 @@ This navigation module includes a new topology map server that supports predefin
 
 
 > The localization framework is based on pose estimation using the `robot_localization` package. It integrates data from various sensors, including:
-    > - VSLAM (HDL Localization) module
-    > - GPS sensor
-    > - Wheel odometry
-    > - IMU sensor
+> - VSLAM (HDL Localization) module
+> - GPS sensor
+> - Wheel odometry
+> - IMU sensor
 
-![alt text](documents/robot_localization.png)
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/robot_localization.png" alt="Image 1" width="480" style="margin-right: 1px;">
+</div>
+
 _* The box represented in orange is used_
