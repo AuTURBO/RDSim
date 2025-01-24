@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     binutils \
     mesa-utils \
     x-window-system \
-    python3-pip \
+    python3-pip \ 
     terminator \
     gedit \
     cmake \
@@ -88,7 +88,7 @@ RUN rosdep update
 
 # GitHub 리포지토리 설치 스크립트 복사 및 실행
 COPY install.sh /tmp/install.sh
-RUN chmod +x /tmp/install.sh && /tmp/install.sh && rm /tmp/install.sh
+RUN chmod +x /tmp/install.sh && /tmp/install.sh && rm /tmp/install.sh 
 
 # 컨테이너 외부와의 통신을 위한 포트 공개
 # WebSocket server
@@ -97,5 +97,3 @@ EXPOSE 8080
 EXPOSE 7681  
 # Gazebo master server
 EXPOSE 11345 
-
-
