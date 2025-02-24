@@ -167,7 +167,7 @@ This navigation module includes a new topology map server that supports predefin
 
 
 > The localization framework is based on pose estimation using the `robot_localization` package. It integrates data from various sensors, including:
-> - VSLAM (HDL Localization) module
+> - 3D Lidar SLAM (HDL Localization) module
 > - GPS sensor
 > - Wheel odometry
 > - IMU sensor
