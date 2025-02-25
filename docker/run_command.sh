@@ -1,4 +1,4 @@
-docker build -t rdsim:v1.0 .
+docker build --no-cache -t rdsim:v1.0 .
 
 docker run -it \
     --privileged \

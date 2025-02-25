@@ -80,6 +80,8 @@ $ cd ~/ros2_ws && colcon build --symlink-install --parallel-workers 8 && source 
 ```bash
 # in rdsim main directory
 cd ~/ros2_ws/src/RDSim/docker && ./run_command.sh
+# in docker container
+cd ~/ros2_ws && colcon build --symlink-install --parallel-workers 8 && source install/local_setup.bash
 ```
 
 ## 2. Executing the RDSim with One Line

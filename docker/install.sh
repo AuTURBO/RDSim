@@ -24,5 +24,4 @@ sudo make install
 
 cd ~/ros2_ws
 rosdep install --ignore-src --rosdistro humble --from-paths ./src/RDSim/rdsim_submodules/navigation2 -y
-colcon build --symlink-install && source install/local_setup.bash
 
