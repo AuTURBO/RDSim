@@ -165,6 +165,16 @@ This navigation module includes a new topology map server that supports predefin
   <img src="documents/behavior_tree.png" alt="Image 2" width="300" style="margin-left: 10px;">
 </div>
 
+By sending the send_gal action in ROS 2, a path is generated along the edges from the starting point to the destination using a topology map. The status of the Behavior Tree (BT) nodes can be monitored in real-time through Groot.
+
+```bash
+ros2 action send_goal /navigate_to_topology nav2_msgs/action/NavigateToTopology "start_vertex_id: 0
+end_vertex_id: 1
+behavior_tree: ''" -f
+```
+
+[![Video Label](https://img.youtube.com/vi/TnKT1lYnIRw/0.jpg)](https://youtu.be/TnKT1lYnIRw?si=Yi2XdAiFbo_Gp94S)
+
 
 > The localization framework is based on pose estimation using the `robot_localization` package. It integrates data from various sensors, including:
 > - 3D Lidar SLAM (HDL Localization) module
