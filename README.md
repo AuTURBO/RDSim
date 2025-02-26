@@ -158,12 +158,25 @@ This Navigation can detect 3D obstacles, such as trees, using a 3D LiDAR sensor 
   <img src="./documents/3d_obstacles_detection.png" alt="Image 1" width="480" style="margin-right: 1px;">
 </div>
 
+The topology map can be generated using the rdsim_submodules/RDSim_GUI package. It can be run with Python, and nodes and edges can be created and modified through mouse clicks on the web interface.
+
+```bash
+cd rdsim_submodules/RDSim_GUI
+python3 main.py
+```
+
 This navigation module includes a new topology map server that supports predefined routing plans for efficient delivery in the GAZEBO simulation environment. The topology map server is implemented as a behavior, enabling the use of behavior trees for flexible and adaptive decision-making. Additionally, the behavior tree can be visualized using Groot for better understanding and debugging.
 
 <div style="display: flex; justify-content: center;">
   <img src="documents/topology_route.png" alt="Image 1" width="300" style="margin-right: 10px;">
   <img src="documents/behavior_tree.png" alt="Image 2" width="300" style="margin-left: 10px;">
 </div>
+
+
+<div style="display: flex; justify-content: center;">
+  <img src="./documents/topology_generation.png" alt="Image 1" width="480" style="margin-right: 1px;">
+</div>
+
 
 By sending the send_gal action in ROS 2, a path is generated along the edges from the starting point to the destination using a topology map. The status of the Behavior Tree (BT) nodes can be monitored in real-time through Groot.
 
