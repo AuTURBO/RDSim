@@ -173,10 +173,6 @@ This navigation module includes a new topology map server that supports predefin
 </div>
 
 
-<div style="display: flex; justify-content: center;">
-  <img src="./documents/topology_generation.png" alt="Image 1" width="480" style="margin-right: 1px;">
-</div>
-
 
 By sending the send_gal action in ROS 2, a path is generated along the edges from the starting point to the destination using a topology map. The status of the Behavior Tree (BT) nodes can be monitored in real-time through Groot.
 
