@@ -6,3 +6,6 @@
 	path = rdsim_submodules/BehaviorTree.CPP
 	url = https://github.com/BehaviorTree/BehaviorTree.CPP.git
 	branch = v3_groot2_publisher
+[submodule "rdsim_submodules/RDSim_GUI"]
+	path = rdsim_submodules/RDSim_GUI
+	url = https://github.com/AuTURBO/RDSim_GUI

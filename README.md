@@ -160,6 +160,13 @@ This Navigation can detect 3D obstacles, such as trees, using a 3D LiDAR sensor 
   <img src="./documents/3d_obstacles_detection.png" alt="Image 1" width="480" style="margin-right: 1px;">
 </div>
 
+The topology map can be generated using the rdsim_submodules/RDSim_GUI package. It can be run with Python, and nodes and edges can be created and modified through mouse clicks on the web interface.
+
+```bash
+cd rdsim_submodules/RDSim_GUI
+python3 main.py
+```
+
 This navigation module includes a new topology map server that supports predefined routing plans for efficient delivery in the GAZEBO simulation environment. The topology map server is implemented as a behavior, enabling the use of behavior trees for flexible and adaptive decision-making. Additionally, the behavior tree can be visualized using Groot for better understanding and debugging.
 
 <div style="display: flex; justify-content: center;">
@@ -168,8 +175,20 @@ This navigation module includes a new topology map server that supports predefin
 </div>
 
 
+
+By sending the send_gal action in ROS 2, a path is generated along the edges from the starting point to the destination using a topology map. The status of the Behavior Tree (BT) nodes can be monitored in real-time through Groot.
+
+```bash
+ros2 action send_goal /navigate_to_topology nav2_msgs/action/NavigateToTopology "start_vertex_id: 0
+end_vertex_id: 1
+behavior_tree: ''" -f
+```
+
+[![Video Label](https://img.youtube.com/vi/TnKT1lYnIRw/0.jpg)](https://youtu.be/TnKT1lYnIRw?si=Yi2XdAiFbo_Gp94S)
+
+
 > The localization framework is based on pose estimation using the `robot_localization` package. It integrates data from various sensors, including:
-> - VSLAM (HDL Localization) module
+> - 3D Lidar SLAM (HDL Localization) module
 > - GPS sensor
 > - Wheel odometry
 > - IMU sensor
