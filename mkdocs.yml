@@ -1,7 +1,7 @@
 site_name: "RDSim"
 site_author: ggh-png
 repo_url: https://github.com/AuTURBO/RDSim
-site_url: https://AuTURBO.github.io/RDSim
+site_url: https://auturbo.github.io/RDSim/
 site_description: "RDSim is a high-fidelity Robo Delivery Simulator designed for autonomous delivery systems."
 
 theme:
