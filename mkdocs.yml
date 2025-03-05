@@ -1,0 +1,57 @@
+site_name: "RDSim"
+site_author: ggh-png
+repo_url: https://github.com/AuTURBO/RDSim
+site_url: https://AuTURBO.github.io/RDSim
+site_description: "RDSim is a high-fidelity Robo Delivery Simulator designed for autonomous delivery systems."
+
+theme:
+    name: material
+    palette:
+        primary: indigo
+    logo: # assets/logo2_w.png
+    favicon: # assets/glim_gray.png
+    front:
+        text: Roboto
+
+use_directory_urls: false
+
+markdown_extensions:
+    - meta
+    - attr_list
+    - admonition
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+copyright: Copyright &copy; 2024 - 2025 ggh-png
+extra:
+    social:
+        # - icon: material/home
+        #   link: https://staff.aist.go.jp/k.koide/
+        - icon: fontawesome/brands/github
+          link: https://github.com/AuTURBO/RDSim
+        - icon: fontawesome/brands/docker
+          link: https://hub.docker.com/repository/docker/koide3/glim_ros
+        # - icon: fontawesome/brands/twitter
+        #   link: https://twitter.com/k_koide3
+
+extra_css:
+    - "css/custom.css"
+    - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+
+nav:
+    - 'index.md'
+    # - 'installation.md'
+    # - 'docker.md'
+    # - 'quickstart.md'
+    # - 'parameters.md'
+    # - 'demo.md'
+    # - 'extend.md'
+    # - 'extensions.md'
+    # - 'faq.md'
+    # - 'api.md'

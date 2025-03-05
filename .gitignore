@@ -400,3 +400,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# mkdocs documentation
+docs/html/*
+site/*
+imgui.ini
